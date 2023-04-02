@@ -31,7 +31,7 @@ sudo make install
 Make sure to remove or move your current `nvim` directory
 
 ```sh
-git clone https://github.com/LunarVim/nvim-basic-ide.git ~/.config/nvim
+git clone https://github.com/MohitRane8/nvim-basic-ide.git ~/.config/nvim
 ```
 
 Run `nvim` and wait for the plugins to be installed
@@ -40,7 +40,7 @@ Run `nvim` and wait for the plugins to be installed
 
 **NOTE** (You will notice treesitter pulling in a bunch of parsers the next time you open Neovim)
 
-**NOTE** Checkout this file for some predefined keymaps: [keymaps](https://github.com/LunarVim/nvim-basic-ide/blob/master/lua/user/keymaps.lua)
+**NOTE** Checkout this file for some predefined keymaps: [keymaps](https://github.com/MohitRane8/nvim-basic-ide/blob/master/lua/user/keymaps.lua)
 
 ## Get healthy
 

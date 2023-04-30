@@ -7,8 +7,12 @@ local M = {
       "mfussenegger/nvim-dap",
       commit = "6b12294a57001d994022df8acbe2ef7327d30587",
       event = "VeryLazy",
+      -- disable this plugin temporarily
+      cond = false,
     },
   },
+  -- disable this plugin temporarily
+  cond = false,
 }
 
 function M.config()

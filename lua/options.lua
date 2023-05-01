@@ -41,6 +41,7 @@ vim.opt.whichwrap:append "<,>,[,],h,l"          -- keys allowed to move to the p
 vim.opt.iskeyword:append "-"                    -- treats words with `-` as single words
 vim.opt.formatoptions:remove { "c", "r", "o" }  -- This is a sequence of letters which describes how automatic formatting is to be done
 vim.opt.linebreak = true
+vim.opt.guicursor = "n:blinkon1"               -- make the cursor blink
 
 -- vim.opt.clipboard = unnamedplus won't work correctly without the following snippet
 if vim.fn.has('wsl') == 1 then

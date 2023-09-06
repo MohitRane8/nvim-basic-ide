@@ -41,7 +41,9 @@ vim.opt.whichwrap:append "<,>,[,],h,l"          -- keys allowed to move to the p
 vim.opt.iskeyword:append "-"                    -- treats words with `-` as single words
 vim.opt.formatoptions:remove { "c", "r", "o" }  -- This is a sequence of letters which describes how automatic formatting is to be done
 vim.opt.linebreak = true
-vim.opt.guicursor = "n:blinkon1"               -- make the cursor blink
+vim.opt.foldmethod = "indent"                   -- proper folding for C/C++
+vim.opt.listchars = "eol:¬,tab:>·,trail:~,extends:>,precedes:<"             -- requried for checking formatting using :set list
+-- vim.opt.guicursor = "n:blinkon1"               -- make the cursor blink
 
 -- vim.opt.clipboard = unnamedplus won't work correctly without the following snippet
 if vim.fn.has('wsl') == 1 then
@@ -58,4 +60,32 @@ if vim.fn.has('wsl') == 1 then
         cache_enabled = 0,
     }
 end
+
+-- " Retain window position when moving across buffers
+-- " Save current view settings on a per-window, per-buffer basis.
+-- function! AutoSaveWinView()
+--     if !exists("w:SavedBufView")
+--         let w:SavedBufView = {}
+--     endif
+--     let w:SavedBufView[bufnr("%")] = winsaveview()
+-- endfunction
+-- 
+-- " Restore current view settings.
+-- function! AutoRestoreWinView()
+--     let buf = bufnr("%")
+--     if exists("w:SavedBufView") && has_key(w:SavedBufView, buf)
+--         let v = winsaveview()
+--         let atStartOfFile = v.lnum == 1 && v.col == 0
+--         if atStartOfFile && !&diff
+--             call winrestview(w:SavedBufView[buf])
+--         endif
+--         unlet w:SavedBufView[buf]
+--     endif
+-- endfunction
+-- 
+-- " When switching buffers, preserve window view.
+-- if v:version >= 700
+--     autocmd BufLeave * call AutoSaveWinView()
+--     autocmd BufEnter * call AutoRestoreWinView()
+-- endif
 

@@ -17,6 +17,7 @@ local M = {
 }
 function M.config()
   local treesitter = require "nvim-treesitter"
+  --require("nvim-treesitter.install").prefer_git = true
   local configs = require "nvim-treesitter.configs"
 
   configs.setup {

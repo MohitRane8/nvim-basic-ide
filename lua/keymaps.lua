@@ -6,6 +6,7 @@ local opts = { silent = true }
 --Remap space as leader key
 keymap("", "<Space>", "<Nop>", opts)
 vim.g.mapleader = " "
+-- vim.g.maplocalleader = ","
 
 -- Modes
 --   normal_mode = "n",
@@ -16,6 +17,15 @@ vim.g.mapleader = " "
 --   command_mode = "c",
 
 -- Normal --
+-- Scrolling without cursor movement
+-- keymap("n", "<C-j>", "<C-e><C-e><C-e>", opts)
+-- keymap("n", "<C-k>", "<C-y><C-y><C-y>", opts)
+
+-- Jumps to newer entry in tag stack
+-- Originally <C-y> is used to scroll up the file 1 line
+-- <C-t> jumps to the old entry in tag stack
+keymap("n", "<C-y>", ":ta<CR>", opts)
+
 -- Better window navigation
 keymap("n", "<C-h>", "<C-w>h", opts)
 keymap("n", "<C-j>", "<C-w>j", opts)
@@ -55,9 +65,15 @@ keymap("v", ">", ">gv", opts)
 -- NvimTree
 keymap("n", "<leader>e", ":NvimTreeToggle<CR>", opts)
 
+-- -- Easymotion"
+-- -- ,{char}{char}{label}
+-- -- Need one more keystroke, but on average, it may be more comfortable.
+-- keymap("n", ";", "<Plug>(easymotion-overwin-f2)", opts)
+
 -- Telescope
 keymap("n", "<leader>ff", ":Telescope find_files<CR>", opts)
 keymap("n", "<leader>ft", ":Telescope live_grep<CR>", opts)
+keymap("n", "<leader>fs", ":Telescope grep_string<CR>", opts)
 keymap("n", "<leader>fp", ":Telescope projects<CR>", opts)
 keymap("n", "<leader>fb", ":Telescope buffers<CR>", opts)
 
@@ -81,3 +97,18 @@ keymap("n", "<leader>dt", "<cmd>lua require'dap'.terminate()<cr>", opts)
 
 -- Lsp
 keymap("n", "<leader>lf", "<cmd>lua vim.lsp.buf.format{ async = true }<cr>", opts)
+
+-- C/C++
+-- " C++ function yank/delete/change/select
+-- " a = around, i = in
+-- nnoremap <silent> yaf ][jVk%{jy
+-- nnoremap <silent> yif ][kVj%jy
+-- nnoremap <silent> daf ][jVk%{jx
+-- nnoremap <silent> dif ][kVj%jd
+-- nnoremap <silent> cif ][kVj%jdO
+-- nnoremap <silent> vaf ][jVk%{jv
+-- 
+-- " C++ function expand and move to top
+-- nnoremap <C-h> {][%zczO{jzt]]
+-- " nnoremap <silent!> <C-h> {][%zczO{jzozt]]
+-- " nnoremap <C-h> {][%zczO{jzOzt]]

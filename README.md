@@ -10,7 +10,7 @@ All the included plugins are pinned to a version that ensures they are compatibl
 
 As I mentioned, this config is meant as a starting point for people new to Neovim who want a familiar IDE experience. The config has a very simple structure that makes it easy to add new plugins.
 
-#### Migration guide to lazy from packer
+### Migration guide to lazy from packer
 
 Now this config uses `lazy.nvim` as a plugin manager, so if you are migrating from packer you should probably remove
 `$HOME/.local/share/nvim` and re-open nvim to re-install the plugins to not face any issues.
@@ -132,7 +132,7 @@ M.servers = {
 	"bashls",
 	"jsonls",
 	"yamlls",
-    "terraform_lsp" -- New LSP
+    	"terraform_lsp" -- New LSP
 }
 ```
 
@@ -148,46 +148,44 @@ Make sure the formatter or linter is installed and add it to this setup function
 
 ### You can install new plugins here: [plugins](https://github.com/LunarVim/nvim-basic-ide/tree/master/lua/user)
 
-Just make a new file with your plugin and the configuration in it,
-[Which-key](https://github.com/LunarVim/nvim-basic-ide/blob/master/lua/user/which-key.lua) file is a very good example of how you would do it.
+Heres the wiki for installing new plugins refer to this: [wiki](https://github.com/LunarVim/nvim-basic-ide/wiki/adding_new_plugins)
 
 ## Plugins
 
-- [lazy](https://github.com/folke/lazy.nvim)
-- [plenary](https://github.com/nvim-lua/plenary.nvim)
-- [nvim-autopairs](https://github.com/windwp/nvim-autopairs)
-- [Comment.nvim](https://github.com/numToStr/Comment.nvim)
-- [nvim-ts-context-commentstring](https://github.com/JoosepAlviste/nvim-ts-context-commentstring)
-- [nvim-web-devicons](https://github.com/nvim-tree/nvim-web-devicons)
-- [nvim-tree.lua](https://github.com/kyazdani42/nvim-tree.lua)
-- [bufferline.nvim](https://github.com/akinsho/bufferline.nvim)
-- [bufdelete.nvim](https://github.com/famiu/bufdelete.nvim)
-- [lualine.nvim](https://github.com/nvim-lualine/lualine.nvim)
-- [toggleterm.nvim](https://github.com/akinsho/toggleterm.nvim)
-- [project.nvim](https://github.com/ahmedkhalf/project.nvim)
-- [impatient.nvim](https://github.com/lewis6991/impatient.nvim)
-- [indent-blankline.nvim](https://github.com/lukas-reineke/indent-blankline.nvim)
 - [alpha-nvim](https://github.com/goolord/alpha-nvim)
-- [tokyonight.nvim](https://github.com/folke/tokyonight.nvim)
-- [nvim-cmp](https://github.com/hrsh7th/nvim-cmp)
+- [bufdelete.nvim](https://github.com/famiu/bufdelete.nvim)
+- [bufferline.nvim](https://github.com/akinsho/bufferline.nvim)
 - [cmp-buffer](https://github.com/hrsh7th/cmp-buffer)
-- [cmp-path](https://github.com/hrsh7th/cmp-path)
-- [cmp_luasnip](https://github.com/saadparwaiz1/cmp_luasnip)
 - [cmp-nvim-lsp](https://github.com/hrsh7th/cmp-nvim-lsp)
 - [cmp-nvim-lua](https://github.com/hrsh7th/cmp-nvim-lua)
-- [LuaSnip](https://github.com/L3MON4D3/LuaSnip)
-- [friendly-snippets](https://github.com/rafamadriz/friendly-snippets)
-- [mason.nvim](https://github.com/williamboman/mason.nvim)
-- [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig)
-- [mason-lspconfig.nvim](https://github.com/williamboman/mason-lspconfig.nvim)
-- [null-ls.nvim](https://github.com/jose-elias-alvarez/null-ls.nvim)
-- [vim-illuminate](https://github.com/RRethy/vim-illuminate)
-- [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim)
-- [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter)
-- [gitsigns.nvim](https://github.com/lewis6991/gitsigns.nvim)
-- [nvim-dap](https://github.com/mfussenegger/nvim-dap)
-- [nvim-dap-ui](https://github.com/rcarriga/nvim-dap-ui)
+- [cmp-path](https://github.com/hrsh7th/cmp-path)
+- [cmp_luasnip](https://github.com/saadparwaiz1/cmp_luasnip)
+- [Comment.nvim](https://github.com/numToStr/Comment.nvim)
 - [DAPInstall.nvim](https://github.com/ravenxrz/DAPInstall.nvim)
+- [friendly-snippets](https://github.com/rafamadriz/friendly-snippets)
+- [gitsigns.nvim](https://github.com/lewis6991/gitsigns.nvim)
+- [indent-blankline.nvim](https://github.com/lukas-reineke/indent-blankline.nvim)
+- [lazy.nvim](https://github.com/folke/lazy.nvim)
+- [lualine.nvim](https://github.com/nvim-lualine/lualine.nvim)
+- [LuaSnip](https://github.com/L3MON4D3/LuaSnip)
+- [mason-lspconfig.nvim](https://github.com/williamboman/mason-lspconfig.nvim)
+- [mason.nvim](https://github.com/williamboman/mason.nvim)
+- [null-ls.nvim](https://github.com/jose-elias-alvarez/null-ls.nvim)
+- [nvim-autopairs](https://github.com/windwp/nvim-autopairs)
+- [nvim-cmp](https://github.com/hrsh7th/nvim-cmp)
+- [nvim-dap-ui](https://github.com/rcarriga/nvim-dap-ui)
+- [nvim-dap](https://github.com/mfussenegger/nvim-dap)
+- [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig)
+- [nvim-tree.lua](https://github.com/kyazdani42/nvim-tree.lua)
+- [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter)
+- [nvim-ts-context-commentstring](https://github.com/JoosepAlviste/nvim-ts-context-commentstring)
+- [nvim-web-devicons](https://github.com/nvim-tree/nvim-web-devicons)
+- [plenary.nvim](https://github.com/nvim-lua/plenary.nvim)
+- [project.nvim](https://github.com/ahmedkhalf/project.nvim)
+- [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim)
+- [toggleterm.nvim](https://github.com/akinsho/toggleterm.nvim)
+- [tokyonight.nvim](https://github.com/folke/tokyonight.nvim)
+- [vim-illuminate](https://github.com/RRethy/vim-illuminate)
 - [which-key.nvim](https://github.com/folke/which-key.nvim)
 
 ---

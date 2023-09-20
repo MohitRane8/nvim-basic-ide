@@ -1,5 +1,5 @@
 -- To call a function from this file at runtime, enter following command
--- :lua require"compdb".some_function()
+-- :lua require"vimscripts".some_function()
 
 local function compdb_formatter()
     vim.cmd([[

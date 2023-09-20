@@ -72,10 +72,43 @@ keymap("n", "<leader>e", ":NvimTreeToggle<CR>", opts)
 
 -- Telescope
 keymap("n", "<leader>ff", ":Telescope find_files<CR>", opts)
-keymap("n", "<leader>ft", ":Telescope live_grep<CR>", opts)
-keymap("n", "<leader>fs", ":Telescope grep_string<CR>", opts)
+keymap("n", "<leader>fr", ":Telescope lsp_references<CR>", opts)
+keymap("n", "<leader>fg", ":Telescope live_grep<CR>", opts)
+keymap("n", "<leader>fgs", ":Telescope grep_string<CR>", opts)
 keymap("n", "<leader>fp", ":Telescope projects<CR>", opts)
 keymap("n", "<leader>fb", ":Telescope buffers<CR>", opts)
+-- keymap("n", "<leader>ff", "<cmd>lua require'telescope.builtin'.find_files(require('telescope.themes').get_dropdown({ previewer = false }))<cr>", opts)
+-- keymap("n", "<leader>ff", "<cmd>lua require'telescope.builtin'.find_files({layout_strategy='vertical',layout_config={width=0.9}})<cr>", opts)
+-- telescope.builtin.lsp_incoming_calls()
+-- telescope.builtin.lsp_outgoing_calls() -- optional
+-- telescope.builtin.lsp_definitions()
+-- telescope.builtin.lsp_workspace_symbols()
+-- telescope.builtin.lsp_dynamic_workspace_symbols() -- dynamic?
+-- telescope.builtin.jumplist()
+-- telescope.builtin.keymaps()
+-- telescope.builtin.registers()
+-- telescope.builtin.marks()
+-- telescope.builtin.colorscheme()
+-- telescope.builtin.help_tags() -- optional
+-- telescope.builtin.search_history()
+-- telescope.builtin.command_history()
+-- telescope.builtin.oldfiles() -- optional
+-- telescope.builtin.quickfixhistory() -- optional
+-- telescope.builtin.quickfix()
+--
+-- telescope.builtin.lsp_document_symbols() for Clang LSP (only if present in compile_commands.json)
+-- global variables (as variables) and functions (as function)
+-- lists in order: symbol name, line number (optional), type
+--
+-- telescope.builtin.treesitter() lists the following for C++
+-- local/global variables (as var), functions (as function), and incomplete list of function parameters (as parameter)
+-- lists in order: symbol name, line number (optional), type
+keymap("n", "<leader>ft", ":Telescope treesitter<CR>", opts)
+keymap("n", "<leader>ftf", "<cmd>lua require'telescope.builtin'.treesitter(require('telescope.themes').get_dropdown({ previewer = false, symbols = { 'function' } }))<CR>", opts)
+--
+-- telescope.builtin.current_buffer_fuzzy_find()
+--
+-- telescope.defaults.file_ignore_patterns
 
 -- Git
 keymap("n", "<leader>gg", "<cmd>lua _LAZYGIT_TOGGLE()<CR>", opts)
@@ -85,17 +118,17 @@ keymap("n", "<leader>/", "<cmd>lua require('Comment.api').toggle.linewise.curren
 keymap("x", "<leader>/", "<esc><cmd>lua require('Comment.api').toggle.linewise(vim.fn.visualmode())<CR>", opts)
 
 -- DAP
-keymap("n", "<leader>db", "<cmd>lua require'dap'.toggle_breakpoint()<cr>", opts)
-keymap("n", "<leader>dc", "<cmd>lua require'dap'.continue()<cr>", opts)
-keymap("n", "<leader>di", "<cmd>lua require'dap'.step_into()<cr>", opts)
-keymap("n", "<leader>do", "<cmd>lua require'dap'.step_over()<cr>", opts)
-keymap("n", "<leader>dO", "<cmd>lua require'dap'.step_out()<cr>", opts)
-keymap("n", "<leader>dr", "<cmd>lua require'dap'.repl.toggle()<cr>", opts)
-keymap("n", "<leader>dl", "<cmd>lua require'dap'.run_last()<cr>", opts)
-keymap("n", "<leader>du", "<cmd>lua require'dapui'.toggle()<cr>", opts)
-keymap("n", "<leader>dt", "<cmd>lua require'dap'.terminate()<cr>", opts)
+-- keymap("n", "<leader>db", "<cmd>lua require'dap'.toggle_breakpoint()<cr>", opts)
+-- keymap("n", "<leader>dc", "<cmd>lua require'dap'.continue()<cr>", opts)
+-- keymap("n", "<leader>di", "<cmd>lua require'dap'.step_into()<cr>", opts)
+-- keymap("n", "<leader>do", "<cmd>lua require'dap'.step_over()<cr>", opts)
+-- keymap("n", "<leader>dO", "<cmd>lua require'dap'.step_out()<cr>", opts)
+-- keymap("n", "<leader>dr", "<cmd>lua require'dap'.repl.toggle()<cr>", opts)
+-- keymap("n", "<leader>dl", "<cmd>lua require'dap'.run_last()<cr>", opts)
+-- keymap("n", "<leader>du", "<cmd>lua require'dapui'.toggle()<cr>", opts)
+-- keymap("n", "<leader>dt", "<cmd>lua require'dap'.terminate()<cr>", opts)
 
--- Lsp
+-- Lsp Formatter
 keymap("n", "<leader>lf", "<cmd>lua vim.lsp.buf.format{ async = true }<cr>", opts)
 
 -- C/C++

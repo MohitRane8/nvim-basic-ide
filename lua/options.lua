@@ -41,7 +41,9 @@ vim.opt.whichwrap:append "<,>,[,],h,l"          -- keys allowed to move to the p
 vim.opt.iskeyword:append "-"                    -- treats words with `-` as single words
 vim.opt.formatoptions:remove { "c", "r", "o" }  -- This is a sequence of letters which describes how automatic formatting is to be done
 vim.opt.linebreak = true
+vim.opt.foldenable = false                      -- disable folding by default
 vim.opt.foldmethod = "indent"                   -- proper folding for C/C++
+vim.opt.winbar = "%=%m %f"                      -- file name at top right corner
 vim.opt.listchars = "eol:¬,tab:>·,trail:~,extends:>,precedes:<"             -- requried for checking formatting using :set list
 -- vim.opt.guicursor = "n:blinkon1"               -- make the cursor blink
 

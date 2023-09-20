@@ -1,8 +1,9 @@
+-- To call a function from this file at runtime, enter following command
 -- :lua require"compdb".some_function()
 
-local function corrector()
+local function compdb_formatter()
     vim.cmd([[
-        function! CompdbCorrector()
+        function! FormatCompdb()
             execute "%s-\"command\": \"-\"arguments\": [ -g"
             execute "normal! gg"
 
@@ -29,10 +30,10 @@ local function corrector()
         endfunction
     ]])
 
-    vim.cmd('call CompdbCorrector()')
+    vim.cmd('call FormatCompdb()')
 end
 
 return {
-    corrector = corrector
+    compdb_formatter = compdb_formatter
 }
 

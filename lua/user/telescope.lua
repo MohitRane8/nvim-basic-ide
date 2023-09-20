@@ -5,6 +5,10 @@ local M = {
   cmd = { "Telescope" },
   dependencies = {
     {
+      "nvim-lua/plenary.nvim",
+      commit = "9a0d3bf7b832818c042aaf30f692b081ddd58bd9",
+    },
+    {
       "ahmedkhalf/project.nvim",
     },
   },
@@ -15,9 +19,26 @@ local actions = require "telescope.actions"
 M.opts = {
   defaults = {
     prompt_prefix = " ",
-    selection_caret = " ",
+    -- selection_caret = " ",
+    selection_caret = "> ",
     path_display = { "smart" },
     file_ignore_patterns = { ".git/", "node_modules" },
+    layout_strategy = "horizontal",
+    layout_config = {
+      horizontal = {
+        height = 0.94,
+        width = 0.90,
+        prompt_position = "top",
+        preview_width = function(_, cols, _)
+          if cols > 200 then
+            return math.floor(cols * 0.4)
+          else
+            return math.floor(cols * 0.6)
+          end
+        end,
+      },
+    },
+    sorting_strategy = "ascending",
     mappings = {
       i = {
         ["<Down>"] = actions.move_selection_next,
@@ -27,6 +48,26 @@ M.opts = {
       },
     },
   },
+  pickers = {
+    find_files = {
+      theme = "dropdown",
+      previewer = false,
+    },
+    live_grep = {
+      disable_coordinates = true,
+    },
+    grep_string = {
+      disable_coordinates = true,
+    },
+    treesitter = {
+      show_line = false,
+    },
+    lsp_references = {
+      include_declaration = true,
+      include_current_line = true,
+    },
+  },
+  -- colorscheme = { enable_preview = true, }
 }
 
 return M

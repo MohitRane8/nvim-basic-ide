@@ -1,5 +1,4 @@
 lazy-lock.json
-*.json
 
 # Compiled Lua sources
 luac.out

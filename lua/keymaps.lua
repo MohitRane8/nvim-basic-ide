@@ -24,7 +24,7 @@ vim.g.mapleader = " "
 -- Jumps to newer entry in tag stack
 -- Originally <C-y> is used to scroll up the file 1 line
 -- <C-t> jumps to the old entry in tag stack
-keymap("n", "<C-y>", ":ta<CR>", opts)
+-- keymap("n", "<C-y>", ":ta<CR>", opts)
 
 -- Better window navigation
 keymap("n", "<C-h>", "<C-w>h", opts)
@@ -43,17 +43,13 @@ keymap("n", "<S-l>", ":bnext<CR>", opts)
 keymap("n", "<S-h>", ":bprevious<CR>", opts)
 
 -- Clear highlights
-keymap("n", "<leader>h", "<cmd>nohlsearch<CR>", opts)
+-- keymap("n", "<leader>h", "<cmd>nohlsearch<CR>", opts)
 
 -- Close buffers
 keymap("n", "<S-q>", "<cmd>Bdelete!<CR>", opts)
 
 -- Better paste
 keymap("v", "p", "P", opts)
-
--- Insert --
--- Press jk fast to enter
-keymap("i", "jk", "<ESC>", opts)
 
 -- Visual --
 -- Stay in indent mode
@@ -64,11 +60,6 @@ keymap("v", ">", ">gv", opts)
 
 -- NvimTree
 keymap("n", "<leader>e", ":NvimTreeToggle<CR>", opts)
-
--- -- Easymotion"
--- -- ,{char}{char}{label}
--- -- Need one more keystroke, but on average, it may be more comfortable.
--- keymap("n", ";", "<Plug>(easymotion-overwin-f2)", opts)
 
 -- Telescope
 keymap("n", "<leader>ff", ":Telescope find_files<CR>", opts)
@@ -130,6 +121,25 @@ keymap("x", "<leader>/", "<esc><cmd>lua require('Comment.api').toggle.linewise(v
 
 -- Lsp Formatter
 keymap("n", "<leader>lf", "<cmd>lua vim.lsp.buf.format{ async = true }<cr>", opts)
+
+-- Gitsigns
+-- Navigation
+keymap('n', ']c', '<cmd>lua require("gitsigns").next_hunk()<CR>', opts)
+keymap('n', '[c', '<cmd>lua require("gitsigns").prev_hunk()<CR>', opts)
+-- Actions
+keymap('n', '<leader>hs', '<cmd>lua require("gitsigns").stage_hunk()<CR>', opts)
+keymap('n', '<leader>hr', '<cmd>lua require("gitsigns").reset_hunk()<CR>', opts)
+keymap('n', '<leader>hS', '<cmd>lua require("gitsigns").stage_buffer()<CR>', opts)
+keymap('n', '<leader>hu', '<cmd>lua require("gitsigns").undo_stage_hunk()<CR>', opts)
+keymap('n', '<leader>hR', '<cmd>lua require("gitsigns").reset_buffer()<CR>', opts)
+keymap('n', '<leader>hp', '<cmd>lua require("gitsigns").preview_hunk_inline()<CR>', opts)
+keymap('n', '<leader>hb', '<cmd>lua require("gitsigns").blame_line()<CR>', opts)
+keymap('n', '<leader>tb', '<cmd>lua require("gitsigns").toggle_current_line_blame()<CR>', opts)
+keymap('n', '<leader>hd', '<cmd>lua require("gitsigns").diffthis()<CR>', opts)
+keymap('n', '<leader>hD', '<cmd>lua require("gitsigns").diffthis("~")<CR>', opts)
+keymap('n', '<leader>td', '<cmd>lua require("gitsigns").toggle_deleted()<CR>', opts)
+-- Text object
+keymap({'o', 'x'}, 'ih', ':<C-U>lua require("gitsigns").select_hunk()<CR>', opts)
 
 -- C/C++
 -- " C++ function yank/delete/change/select

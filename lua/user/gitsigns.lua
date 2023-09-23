@@ -34,6 +34,10 @@ M.opts = {
     row = 0,
     col = 1,
   },
+  diff_opts = {
+    algorithm = "myers", -- myers, minimal, patience, histogram
+    vertical = true,
+  },
 }
 
 return M

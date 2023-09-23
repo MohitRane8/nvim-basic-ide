@@ -3,20 +3,20 @@ local M = {
   commit = "649137cbc53a044bffde36294ce3160cb18f32c7",
   lazy = false,
   event = { "BufReadPre" },
-  dependencies = {
-    {
-      "hrsh7th/cmp-nvim-lsp",
-      commit = "0e6b2ed705ddcff9738ec4ea838141654f12eeef",
-    },
-  },
+  -- dependencies = {
+  --   {
+  --     "hrsh7th/cmp-nvim-lsp",
+  --     commit = "0e6b2ed705ddcff9738ec4ea838141654f12eeef",
+  --   },
+  -- },
 }
 
 function M.config()
-  local cmp_nvim_lsp = require "cmp_nvim_lsp"
+  -- local cmp_nvim_lsp = require "cmp_nvim_lsp"
 
-  local capabilities = vim.lsp.protocol.make_client_capabilities()
-  capabilities.textDocument.completion.completionItem.snippetSupport = true
-  capabilities = cmp_nvim_lsp.default_capabilities(M.capabilities)
+  -- local capabilities = vim.lsp.protocol.make_client_capabilities()
+  -- capabilities.textDocument.completion.completionItem.snippetSupport = true
+  -- capabilities = cmp_nvim_lsp.default_capabilities(M.capabilities)
 
   local function lsp_keymaps(bufnr)
     local opts = { noremap = true, silent = true }
@@ -49,7 +49,7 @@ function M.config()
   for _, server in pairs(require("utils").servers) do
     Opts = {
       on_attach = on_attach,
-      capabilities = capabilities,
+      -- capabilities = capabilities,
     }
 
     server = vim.split(server, "@")[1]

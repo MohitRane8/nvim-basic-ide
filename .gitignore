@@ -1,4 +1,8 @@
+# Ignore lazy-lock.json
 lazy-lock.json
+
+# Ignore sessions
+*.vim
 
 # Compiled Lua sources
 luac.out

@@ -130,14 +130,14 @@ keymap('n', '[c', '<cmd>lua require("gitsigns").prev_hunk()<CR>', opts)
 keymap('n', '<leader>hs', '<cmd>lua require("gitsigns").stage_hunk()<CR>', opts)
 keymap('n', '<leader>hr', '<cmd>lua require("gitsigns").reset_hunk()<CR>', opts)
 keymap('n', '<leader>hS', '<cmd>lua require("gitsigns").stage_buffer()<CR>', opts)
-keymap('n', '<leader>hu', '<cmd>lua require("gitsigns").undo_stage_hunk()<CR>', opts)
+keymap('n', '<leader>hu', '<cmd>lua require("gitsigns").undo_stage_hunk()<CR>', opts)       -- undo last staged hunk
 keymap('n', '<leader>hR', '<cmd>lua require("gitsigns").reset_buffer()<CR>', opts)
 keymap('n', '<leader>hp', '<cmd>lua require("gitsigns").preview_hunk_inline()<CR>', opts)
 keymap('n', '<leader>hb', '<cmd>lua require("gitsigns").blame_line()<CR>', opts)
 keymap('n', '<leader>tb', '<cmd>lua require("gitsigns").toggle_current_line_blame()<CR>', opts)
-keymap('n', '<leader>hd', '<cmd>lua require("gitsigns").diffthis()<CR>', opts)
-keymap('n', '<leader>hD', '<cmd>lua require("gitsigns").diffthis("~")<CR>', opts)
-keymap('n', '<leader>td', '<cmd>lua require("gitsigns").toggle_deleted()<CR>', opts)
+keymap('n', '<leader>hd', '<cmd>lua require("gitsigns").diffthis()<CR>', opts)              -- diff with index
+keymap('n', '<leader>hD', '<cmd>lua require("gitsigns").diffthis("~")<CR>', opts)           -- diff with working tree
+keymap('n', '<leader>td', '<cmd>lua require("gitsigns").toggle_deleted()<CR>', opts)        -- toggle display of deleted lines
 -- Text object
 keymap({'o', 'x'}, 'ih', ':<C-U>lua require("gitsigns").select_hunk()<CR>', opts)
 

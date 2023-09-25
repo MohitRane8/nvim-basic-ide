@@ -47,21 +47,21 @@ vim.opt.winbar = "%=%m %f"                      -- file name at top right corner
 vim.opt.listchars = "eol:¬,tab:>·,trail:~,extends:>,precedes:<"             -- requried for checking formatting using :set list
 -- vim.opt.guicursor = "n:blinkon1"               -- make the cursor blink
 
--- vim.opt.clipboard = unnamedplus won't work correctly without the following snippet
-if vim.fn.has('wsl') == 1 then
-    vim.g.clipboard = {
-        name = 'WslClipboard',
-        copy = {
-            ['+'] = 'clip.exe',
-            ['*'] = 'clip.exe',
-        },
-        paste = {
-            ['+'] = 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
-            ['*'] = 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
-        },
-        cache_enabled = 0,
-    }
-end
+-- vim.opt.clipboard = unnamedplus may not work correctly without the following snippet
+-- if vim.fn.has('wsl') == 1 then
+--     vim.g.clipboard = {
+--         name = 'WslClipboard',
+--         copy = {
+--             ['+'] = 'clip.exe',
+--             ['*'] = 'clip.exe',
+--         },
+--         paste = {
+--             ['+'] = 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
+--             ['*'] = 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
+--         },
+--         cache_enabled = 0,
+--     }
+-- end
 
 -- " Retain window position when moving across buffers
 -- " Save current view settings on a per-window, per-buffer basis.

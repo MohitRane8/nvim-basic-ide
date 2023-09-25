@@ -4,18 +4,13 @@ local M = {
   event = "BufReadPost",
   dependencies = {
     {
-      "JoosepAlviste/nvim-ts-context-commentstring",
-      event = "VeryLazy",
-      commit = "729d83ecb990dc2b30272833c213cc6d49ed5214",
-    },
-    {
       "nvim-tree/nvim-web-devicons",
       event = "VeryLazy",
     },
   },
 }
+
 function M.config()
-  local treesitter = require "nvim-treesitter"
   --require("nvim-treesitter.install").prefer_git = true
   local configs = require "nvim-treesitter.configs"
 
@@ -33,11 +28,6 @@ function M.config()
       enable = true,
     },
     indent = { enable = true, disable = { "python", "css" } },
-
-    context_commentstring = {
-      enable = true,
-      enable_autocmd = false,
-    },
   }
 end
 

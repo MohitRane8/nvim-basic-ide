@@ -40,11 +40,11 @@ M.opts = {
     },
     sorting_strategy = "ascending",
     mappings = {
-      i = {
+      n = {
         ["<C-j>"] = actions.preview_scrolling_down,
         ["<C-k>"] = actions.preview_scrolling_up,
       },
-      n = {
+      i = {
         ["<C-j>"] = actions.preview_scrolling_down,
         ["<C-k>"] = actions.preview_scrolling_up,
       },
@@ -54,6 +54,16 @@ M.opts = {
     find_files = {
       theme = "dropdown",
       previewer = false,
+    },
+    buffers = {
+      mappings = {
+        n = {
+          ["<C-d>"] = actions.delete_buffer,
+        },
+        i = {
+          ["<C-d>"] = actions.delete_buffer,
+        },
+      },
     },
     live_grep = {
       disable_coordinates = true,

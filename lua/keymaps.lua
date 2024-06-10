@@ -58,7 +58,8 @@ keymap("n", "<leader>v", ":w<CR>:!dos2unix '%:p'<CR><CR>:e<CR>", opts)
 -- If the cursor is on the first character of the function start, then "[m" jumps to previous function
 -- So, "l" before "[m" shifts one character right of whatever function we are in
 -- TODO: add a check here to see if nvim-treesitter-textobjects plugin exists
-keymap("n", "<leader>p", "l[mzt", { silent = true, remap = true })
+-- keymap("n", "<leader>p", "l[mzt", { silent = true, remap = true })
+keymap("n", "<leader>p", "l[mj{jzt", { silent = true, remap = true })
 
 -- Clear highlights
 -- keymap("n", "<leader>h", "<cmd>nohlsearch<CR>", opts)
@@ -129,8 +130,8 @@ keymap("n", "<leader>e", ":NvimTreeToggle<CR>", opts)
 -- keymap("n", "<leader>fs", ":FzfLua grep_project --filename<CR>", opts)
 -- -- find word under cursor
 -- keymap("n", "<leader>fw", "<cmd>lua require('fzf-lua').grep_cword()<CR>", opts)
--- -- find functions in a file
--- keymap("n", "<leader>fn", "<cmd>lua require('fzf-lua').lsp_document_symbols()<CR>", opts)
+-- find functions in a file
+keymap("n", "<leader>fn", "<cmd>lua require('fzf-lua').lsp_document_symbols()<CR>", opts)
 -- -- find keymaps
 -- keymap("n", "<leader>fk", "<cmd>lua require('fzf-lua').keymaps()<CR>", opts)
 -- -- find buffers
@@ -170,12 +171,17 @@ keymap("n", "<leader>fs", ":lua require'telescope.builtin'.grep_string{use_regex
 keymap("n", "<leader>fw", ":Telescope grep_string<CR>", opts)   -- matches case and whole word, no regex
 -- find project
 keymap("n", "<leader>fp", ":Telescope projects<CR>", opts)
--- find functions in a file
-keymap("n", "<leader>fn", "<cmd>lua require'telescope.builtin'.treesitter({ symbols = { 'function', } })<CR>", opts)
+-- NOTE: Listing treesitter symbols with telescope doesn't work within git worktrees.
+-- As a workaround, use FZF-Lua functionality.
+-- -- find functions in a file
+-- keymap("n", "<leader>fn", "<cmd>lua require'telescope.builtin'.treesitter({ symbols = { 'function', } })<CR>", opts)
 -- find keymaps
 keymap("n", "<leader>fk", ":Telescope keymaps<CR>", opts)
 -- find buffers
 keymap("n", "<leader>fb", ":Telescope buffers<CR>", opts)
+-- switch git worktree
+keymap("n", "<leader>fg", "<cmd>lua require('telescope').extensions.git_worktree.git_worktrees(require('telescope.themes').get_dropdown({ previewer = false}))<CR>", opts)
+
 -- TODO: telescope buffer manager
 -- TODO: vscode timeline
 --
@@ -194,7 +200,7 @@ keymap("n", "<leader>fb", ":Telescope buffers<CR>", opts)
 -- telescope.builtin.help_tags() -- optional
 -- telescope.builtin.search_history()
 -- telescope.builtin.command_history()
--- telescope.builtin.oldfiles() -- optional
+-- telescope.builtin.oldfiles()
 -- telescope.builtin.quickfixhistory() -- optional
 -- telescope.builtin.quickfix()
 --

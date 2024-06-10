@@ -9,7 +9,7 @@ local M = {
       commit = "8933abc09df6c381d47dc271b1ee5d266541448e",
     },
   },
-  enabled = false,
+  enabled = true,
 }
 
 function M.config()

@@ -17,7 +17,23 @@ local M = {
 
 function M.config()
   require("barbecue").setup({
+    theme = {
+      normal = { bg = "#131313" },
+
+      ellipsis = { fg = "#c3c3c3" },
+      separator = { fg = "#c3c3c3" },
+      modified = { fg = "#c3c3c3" },
+
+      dirname = { fg = "#c3c3c3" },
+      basename = { fg = "#029c92", bold = true },
+      context = { fg = "#c3c3c3" },
+    },
     show_modified = true,     -- show file modification status
+    show_navic = true,
+    symbols = {
+      modified = " ",
+      separator = ">"
+    },
   })
 end
 

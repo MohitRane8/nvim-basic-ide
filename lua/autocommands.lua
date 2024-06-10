@@ -9,7 +9,7 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
 })
 
 vim.api.nvim_create_autocmd({ "FileType" }, {
-  pattern = { "gitcommit", "markdown" },
+  pattern = { "gitcommit", "markdown", "text" },
   callback = function()
     vim.opt_local.wrap = true
     vim.opt_local.spell = true
@@ -131,6 +131,19 @@ vim.api.nvim_create_autocmd({ "BufEnter" }, {
       vim.b.winview = nil
     end
   end
+})
+
+-- Set folding method to treesitter when treesitter is available.
+-- When not available, use ident folding method.
+vim.api.nvim_create_autocmd({ "BufReadPost" }, {
+  callback = function()
+    if require("nvim-treesitter.parsers").has_parser() then
+      vim.opt.foldmethod = "expr"
+      vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+    else
+      vim.opt.foldmethod = "indent"
+    end
+  end,
 })
 
 -- vim.api.nvim_create_autocmd({ "BufLeave" }, {

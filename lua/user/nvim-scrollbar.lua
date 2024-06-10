@@ -27,18 +27,16 @@ M.config = function()
         text = " ",
         blend = 90, -- Integer between 0 and 100. 0 for fully opaque and 100 to full transparent. Defaults to 30.
         -- color = "#3d3d3d",
-        color = "#63D6D0",
+        -- color = "#63D6D0",
+        color = "#969696",
         color_nr = nil, -- cterm
         highlight = "CursorColumn",
         hide_if_all_visible = true, -- Hides handle if all lines are visible
     },
     marks = {
         Cursor = {
-            -- text = "•",
-            -- text = " ",
-            -- text = " ",
-            -- text = "󰁎",
-            text = "󰅁 ",
+            -- icons = •,  , ,󰁎 ,󰅁 ,󱅿 ,󰧙 ,󰜳 ,󰧘 ,󰛁 
+            text = "󰛁  ",
             priority = 0,
             gui = nil,
             color = "#d4b413",
@@ -160,7 +158,7 @@ M.config = function()
         },
     },
     handlers = {
-        cursor = true,
+        cursor = false,
         diagnostic = false,
         gitsigns = true, -- Requires gitsigns
         handle = true,

@@ -42,8 +42,6 @@ vim.opt.iskeyword:append "-"                    -- treats words with `-` as sing
 vim.opt.formatoptions:remove { "c", "r", "o" }  -- This is a sequence of letters which describes how automatic formatting is to be done
 vim.opt.linebreak = true
 vim.opt.foldenable = false                      -- disable folding by default
--- vim.opt.foldmethod = "expr"                  -- proper folding for C/C++
--- vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
 -- vim.opt.syntax = enable                         -- requried for folding by syntax
 -- vim.opt.winbar = "%=%m %f"                      -- file name at top right corner
 vim.opt.winbar = "%{%v:lua.require'nvim-navic'.get_location()%}"                      -- file name at top right corner

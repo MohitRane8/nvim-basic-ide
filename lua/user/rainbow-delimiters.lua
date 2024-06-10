@@ -10,7 +10,7 @@ local M = {
       },
     }
   end,
-  enabled = true,
+  enabled = false,
 }
 
 return M

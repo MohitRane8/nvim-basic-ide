@@ -1,6 +1,7 @@
 local M = {
   "nvim-telescope/telescope.nvim",
-  commit = "40c31fdde93bcd85aeb3447bb3e2a3208395a868",
+  -- commit = "40c31fdde93bcd85aeb3447bb3e2a3208395a868", -- old commit - used for a very long time and it all works except folding with treesitter.
+  commit = "1e591885751d255b12c3649253cb6c2838e2c724",    -- commit date: 03-23-2024
   event = "VimEnter",
   cmd = { "Telescope" },
   dependencies = {
@@ -111,6 +112,9 @@ M.config = function ()
 
   -- load fzf extension after telescope setup
   require('telescope').load_extension('fzf')
+
+  -- load git-worktree extension after telescope setup
+  require('telescope').load_extension('git_worktree')
 end
 
 return M

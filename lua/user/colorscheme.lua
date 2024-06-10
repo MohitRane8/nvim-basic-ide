@@ -3,14 +3,15 @@
 -- FIXME: rainbow-delimiters plugin colors for brackets look bad with any other
 -- colorscheme except catppuccin
 default = "catppuccin"
+-- default = "vscode"
 
 -- colorschemes for specific filetypes loaded by folke/styler.nvim plugin
 -- colorscheme name can be a style variant like "kanagawa-dragon" for kanagawa colorscheme
 -- fileytpe of a vim buffer can be identified with the command "set ft?"
 -- note: styler only works with colorschemes that set highlights using vim.api.nvim_set_hl
 local styler_themes = {
-  c = { colorscheme = "nightfox" },
-  cpp = { colorscheme = "nightfox" },
+  -- c = { colorscheme = "catppuccin" },
+  -- cpp = { colorscheme = "catppuccin" },
   python = { colorscheme = "nightfox" },
   -- lua = { colorscheme = "nightfox" },
   help = { colorscheme = "duskfox", background = "dark" },
@@ -27,6 +28,17 @@ local M = {
     "ribru17/bamboo.nvim",
     commit = "2c5a7442f8db3dcc3f5175f0bed73675e26e3931",
     name = "bamboo",
+    setup = function()
+      local bamboo = require "bamboo"
+      bamboo.setup ({
+        code_style = {
+          comments = { italic = true },
+          conditionals = { italic = false },
+          namespaces = { italic = false },
+          parameters = { italic = false },
+        },
+      })
+    end,
   },
   {
     "projekt0n/github-nvim-theme",

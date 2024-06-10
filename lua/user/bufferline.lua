@@ -9,7 +9,7 @@ local M = {
       commit = "8933abc09df6c381d47dc271b1ee5d266541448e",
     },
   },
-  enabled = true,
+  enabled = false,
 }
 
 function M.config()
@@ -19,12 +19,12 @@ function M.config()
       right_mouse_command = "Bdelete! %d", -- can be a string | function, see "Mouse actions"
       show_buffer_close_icons = false,
       show_close_icon = false,
-      offsets = { 
+      offsets = {
         { filetype = "NvimTree", text = "File Explorer", padding = 1 },
         { filetype = "DiffviewFiles", text = "Source Control", padding = 1 }
       },
       separator_style = "thin",            -- | "thick" | "thin" | {   'any', 'any' },
-    },                                                                 
+    },
     highlights = {
       fill = {
         fg = { attribute = "fg", highlight = "TabLine" },

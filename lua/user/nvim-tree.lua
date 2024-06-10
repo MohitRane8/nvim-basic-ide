@@ -1,7 +1,9 @@
 local M = {
-  "kyazdani42/nvim-tree.lua",
-  commit = "f5d970d4506f385b29534252d8c15a782fa53034",
-  event = "VimEnter",
+  -- "kyazdani42/nvim-tree.lua",
+  -- commit = "f5d970d4506f385b29534252d8c15a782fa53034",
+  "nvim-tree/nvim-tree.lua",
+  commit = "4054fc4be31bbb34da3a96be1cc03e09aa13bbbb",
+  event = "VeryLazy",
 }
 
 local function on_attach(bufnr)
@@ -86,7 +88,11 @@ function M.config()
       enable = true,
       update_cwd = true,
     },
+
     renderer = {
+      root_folder_label = false,    -- hide absolute path of root folder
+      indent_markers = { enable = true, },
+      -- highlight_git = true,
       icons = {
         glyphs = {
           default = "",
@@ -113,19 +119,26 @@ function M.config()
         },
       },
     },
-    diagnostics = {
-      enable = true,
-      show_on_dirs = true,
-      icons = {
-        hint = "󰌵",
-        info = "",
-        warning = "",
-        error = "",
-      },
-    },
+    -- diagnostics = {
+    --   enable = true,
+    --   show_on_dirs = true,
+    --   icons = {
+    --     hint = "󰌵",
+    --     info = "",
+    --     warning = "",
+    --     error = "",
+    --   },
+    -- },
     view = {
-      width = 30,
+      width = 50,
       side = "left",
+    },
+    actions = {
+      open_file = {
+        window_picker = {
+          enable = false,   -- open files or preview files in window 1 directly
+        },
+      },
     },
   }
 end

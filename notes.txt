@@ -1,0 +1,131 @@
+--- WSL2 ---
+Accessing projects on /mnt (or files which are on Windows) will take a longer time to access on WSL2.
+This affects commands like git which runs significantly slower.
+This is known limitation of WSL2: https://github.com/microsoft/WSL/issues/4197#issuecomment-604592340
+To mitigate the problem, always keep the project files in linux directory.
+
+--- LAZYGIT ---
+- reduce column 1 width
+- reduce column 2 command log height
+- use delta to show staging individual hunks/lines
+
+--- SCROLLBAR ---
+petertriho/nvim-scrollbar:
+- no mouse
+- marks overlap
+- requires nvim-hlslens plugin for search
+- shows signs for current cursor, search and git <- works well
+
+dstein64/nvim-scrollview:
+- has mouse support, click and jump to marks/signs works
+- cannot display signs for git <- dealbreaker
+- couldn't get search marks to work
+
+lewis6991/satellite.nvim:
+- requires neovim 0.10
+
+--- DIFFVIEW ---
+TODO: Create fork of diffview.nvim with the following change:
+~/.local/share/nvim/lazy/diffview.nvim/lua/diffview/scene/views/diff/render.lua lines 145 to 149:
+-- Remove root path line on Diffview Files
+-- comp:add_line(
+--   pl:truncate(pl:vim_fnamemodify(panel.adapter.ctx.toplevel, ":~"), width - 6),
+--   "DiffviewFilePanelRootPath"
+-- )
+
+-- Add empty line
+comp:add_line()
+
+--- NVIMTREE ---
+issues:
+- paste file using "p" does not work
+- git icons does not show up for cas project 
+
+--- BUFFERLINE ---
+disable?
+
+-- NAVIGATING FILES --
+- Familiar Repo
+- - will have a rough idea where the code is in which file
+- - VSCode:
+- - - if file is already opened, click on the file in tabline/open editor/file tree, then manually navigate to the code
+- - - fuzzy search file -> open it -> navigate to the required code
+- - - use search for code text and jump to the file
+
+In lua, I have the following table defined:
+local M = {
+    {
+        name = "A",
+        lazy = true,
+    }
+    {
+        name = "B",
+        lazy = true,
+    }
+    {
+        name = "C",
+        lazy = false,
+    }
+    {
+        name = "D",
+        lazy = true,
+    }
+}
+    
+Write a lua for loop to iterate over the elements of table M and find the first element with the value of "lazy" = "false".
+
+
+--- FZF.VIM vs FZF.LUA vs TELESCOPE ---
+TELESCOPE
+Notes:
+- There are 2 commands to search for strings in Telescope: live_grep and grep_string.
+- live_grep does regex but without fuzzy searching.
+- grep_string does do fuzzy searching but no regex.
+- grep_string can be configured to use regex as well.
+Pros:
+- Preview scrolling experience is great since scrolling can be done with <C-j> and <C-k>.
+- It's the most popular plugin for neovim and many other plugins integrate it.
+- fuzzy searching across the project with an initial "keyword" given is almost as fast as fzf plugins.
+Cons:
+- Scrolling through telescope results is slow and lags and becuase of this, the preview often timeouts.
+- fuzzy searching across all the lines in the project without initial "keyword" is very very slow.
+- No indicator for when the search ongoing and when it has finished.
+
+FZF-LUA
+Notes:
+Has good ness of Fzf.vim and Lua.
+Pros:
+- Lots of sensible commands.
+- Previewer can be configured to match the colorscheme (using the builtin previewer instead of fzf previewer like "bat").
+- Has inidicator to show when the search is ongoing and when it has ended.
+Cons:
+- Cannot scroll line by line through the previewer (builtin).
+- The previewer scrolling is less performant compared to telescope.
+- When fuzzy searching through entire project without initial "keyword", the fuzzy search excludes filename as a part of the search.
+
+FZF.VIM
+Notes:
+The OG.
+Pros:
+- Always the fastest. Rarely have I seen it perform slow than fzf-lua or telescope.
+Cons:
+- Previewer can only show fzf previewer which is "bat".
+- Configuration in lua can be tricky.
+
+- What was tested: fuzzy searching words in a large project (very common use case).
+- Observations:
+- Case 1: fuzzy search through all lines of entire project
+-- Telescope was consistently the slowest (grep_string search=) even with the previewer disabled.
+--- Enterring string in the Telescope search box while it is still listing all the files, breaks the search (Telescope hangs).
+-- Fzf.vim was consistently the fastest.
+-- Fzf.lua performed as well as Fzf.vim 50% of the time. Other time, it was only a few seconds slower than Fzf.vim but still 
+   significantly faster than Telescope.
+-- Takeaway: Can't use Telescope for fuzzy searching words in a project.
+
+- Case 2: starting search with an initial keyword and then fuzzy search throughout the project
+- Irrespective of using any tool, searching with an initial keyword and then fuzzy searching, provides search results a lot faster.
+- Performance of all 3 tools for the full search time was the same in such scenario.
+
+
+- No matter what may be the test case, scrolling through telescope results is not smooth.
+

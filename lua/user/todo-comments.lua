@@ -13,7 +13,7 @@ local M = {
 M.opts = {
   highlight = {
     before = "fg",
-    pattern = [[(KEYWORDS)]],
+    -- pattern = [[(KEYWORDS)\s:]],
   }
 }
 

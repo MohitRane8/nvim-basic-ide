@@ -54,12 +54,14 @@ function M.config()
       always_divide_middle = true,
     },
     sections = {
-      lualine_a = { "mode" },
+      -- check :h lualine-Available-components for list of components that can be displayed on lualine
+      -- some componenets need to be in quotes
+      lualine_a = { { "mode", fmt = function(str) return str:sub(1,1) end } }, -- shows only 1st char of mode
       lualine_b = { "branch" },
-      lualine_c = { diagnostics },
-      lualine_x = { diff, spaces, "encoding", filetype },
-      lualine_y = { location },
-      lualine_z = { "progress" },
+      lualine_c = { "tabs" },
+      lualine_x = { diagnostics, spaces, "encoding" },
+      lualine_y = { },
+      lualine_z = { location },
     },
   }
 end

@@ -3,12 +3,21 @@ local M = {
   commit = "649137cbc53a044bffde36294ce3160cb18f32c7",
   lazy = false,
   event = { "BufReadPre" },
-  -- dependencies = {
-  --   {
-  --     "hrsh7th/cmp-nvim-lsp",
-  --     commit = "0e6b2ed705ddcff9738ec4ea838141654f12eeef",
-  --   },
-  -- },
+  dependencies = {
+    -- {
+    --   "hrsh7th/cmp-nvim-lsp",
+    --   commit = "0e6b2ed705ddcff9738ec4ea838141654f12eeef",
+    -- },
+    {
+      "SmiteshP/nvim-navbuddy",
+      -- commit = "f137a3466a6cd1965cdcc5398daff54e66eebbe5",
+      -- dependencies = {
+      --     "SmiteshP/nvim-navic",
+      --     "MunifTanjim/nui.nvim"
+      -- },
+      -- opts = { lsp = { auto_attach = true } }
+    },
+  },
 }
 
 function M.config()
@@ -26,12 +35,12 @@ function M.config()
     keymap(bufnr, "n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
     keymap(bufnr, "n", "gI", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
     keymap(bufnr, "n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
-    keymap(bufnr, "n", "gl", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
     keymap(bufnr, "n", "<leader>li", "<cmd>LspInfo<cr>", opts)
     keymap(bufnr, "n", "<leader>lI", "<cmd>Mason<cr>", opts)
     keymap(bufnr, "n", "<leader>la", "<cmd>lua vim.lsp.buf.code_action()<cr>", opts)
-    keymap(bufnr, "n", "<leader>lj", "<cmd>lua vim.diagnostic.goto_next({buffer=0})<cr>", opts)
-    keymap(bufnr, "n", "<leader>lk", "<cmd>lua vim.diagnostic.goto_prev({buffer=0})<cr>", opts)
+    keymap(bufnr, "n", "<leader>dl", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
+    keymap(bufnr, "n", "<leader>dj", "<cmd>lua vim.diagnostic.goto_next({buffer=0})<cr>", opts)
+    keymap(bufnr, "n", "<leader>dk", "<cmd>lua vim.diagnostic.goto_prev({buffer=0})<cr>", opts)
     keymap(bufnr, "n", "<leader>lr", "<cmd>lua vim.lsp.buf.rename()<cr>", opts)
     keymap(bufnr, "n", "<leader>ls", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
     keymap(bufnr, "n", "<leader>lq", "<cmd>lua vim.diagnostic.setloclist()<CR>", opts)
@@ -44,9 +53,13 @@ function M.config()
     --end
     lsp_keymaps(bufnr)
     require("illuminate").on_attach(client)
+    if client.server_capabilities.documentSymbolProvider then
+      require("nvim-navic").attach(client, bufnr)
+    end
+    -- require("nvim-navic").on_attach(client)
   end
 
-  for _, server in pairs(require("utils").servers) do
+  for _, server in pairs(require("utils").all_servers) do
     Opts = {
       on_attach = on_attach,
       -- capabilities = capabilities,

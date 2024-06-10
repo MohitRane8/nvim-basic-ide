@@ -9,15 +9,22 @@ local M = {
       commit = "8933abc09df6c381d47dc271b1ee5d266541448e",
     },
   },
+  enabled = false,
 }
+
 function M.config()
   require("bufferline").setup {
     options = {
       close_command = "Bdelete! %d",       -- can be a string | function, see "Mouse actions"
       right_mouse_command = "Bdelete! %d", -- can be a string | function, see "Mouse actions"
-      offsets = { { filetype = "NvimTree", text = "", padding = 1 } },
-      separator_style = "thin",            -- | "thick" | "thin" | { 'any', 'any' },
-    },
+      show_buffer_close_icons = false,
+      show_close_icon = false,
+      offsets = { 
+        { filetype = "NvimTree", text = "File Explorer", padding = 1 },
+        { filetype = "DiffviewFiles", text = "Source Control", padding = 1 }
+      },
+      separator_style = "thin",            -- | "thick" | "thin" | {   'any', 'any' },
+    },                                                                 
     highlights = {
       fill = {
         fg = { attribute = "fg", highlight = "TabLine" },

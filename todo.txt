@@ -1,0 +1,70 @@
+Notes:
+- Displaying error on pressing 'Enter' or with commands like :cc or :cn in quickfix list, the cursor is moved away from quickfix window.
+- Updating line in a buffer does not update the line in quickfix list.
+
+:[nr]cc         - go to error at line number nr
+                - can be executed from quickfix list or buffer
+
+:[nr]cn/cp      - go to next/previous error wrt highlighted quickfix list error, switches cursor to the buffer
+                - can be executed from quickfix list or buffer
+
+:[nr]cbe/caf    - go to next/previous error from within buffer
+                - executes only from within buffer
+                - throws error if no error is available before/after
+
+:[nr]cnf/cpf    - go to first error in next/previous file
+
+:cr [nr]        - same as :[nr]cc but also goes to first error if nr is omitted
+
+:cr/cla[nr]     - go to error nr
+                - if nr is omitted, go to first/last error
+
+:cadde {expr}   - evaluate expr and add resulting lines to current quickfix list
+                - if quickfix list is not present, then a new list is created
+                - current cursor position is not changed
+                - similar commands available that changes cursor position and jumps to first error after new quickfix list is created
+                - NOTE: fzf/rg can possibly be used as expr to search string in project dir, skipping telescope
+
+:cl [from] [to] - list all errors in a temporary buffer optionally [from]/[to]
+                - :filter command can be used to display only quickfix entries matching a supplied pattern
+                - NOTE: :filter command can be used to display quickfix entries from a certain file
+
+QuickFixCmdPre/Post - autocommands before/after running a quickfix command
+
+:cdo {cmd}      - executes {cmd} for all entries
+                - range of entries can be specified
+
+:cfdo {cmd}     - executes {cmd} in each file
+
+:Cfilter {pat}  - create new quickfix list from entries matching {pat} in current quickfix list
+
+:colder/cnewer  - go back to older/newer quickfix list
+
+:chistory       - show list of error lists
+
+:set/getqflist()- set/get attributes of quickfix list like id, title, size, particular line
+
+:hi QuickFixLine ctermbg=Yellow guibg=Yellow - change highlighting of quickfix list line
+
+quickfix line format can be customized
+
+Limitations:
+- Categorizing file errors under that filename is not possible. This practically mandates setting quickfix window at the bottom.
+- Quickfix window is read-only so updating the line in the buffer won't update it in quickfix list.
+
+Features required:
+- preview window with scrolling
+- searches categorized under file names (nice to have)
+- searches update in quickfix window (nice to have)
+
+Bing Chat:
+This command uses the setqflist() function to replace the current quickfix list with a new one.
+:call setqflist([], ‘r’, {‘id’: getqflist({‘nr’: ‘$’})[‘id’], ‘items’: filter(getqflist(), ‘v:val != getqflist({‘idx’: 0})[0]’)})
+
+
+Experience using quickfix:
+- nvim-hlslens highlighted all the old strings that would be replaced with the new one in the quickfix list dynamically.
+- search/replace across multiple files using :cdo was slow.
+- quickfix list has (line and column number) which is useless info.
+- quickfix list does not align found code.
+- quickfix list does not refresh since its read-only.

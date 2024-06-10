@@ -23,7 +23,7 @@ vim.opt.updatetime = 300                        -- faster completion (4000ms def
 vim.opt.writebackup = false                     -- if a file is being edited by another program (or was written to file while editing with another program), it is not allowed to be edited
 vim.opt.expandtab = true                        -- convert tabs to spaces
 vim.opt.shiftwidth = 4                          -- the number of spaces inserted for each indentation
-vim.opt.tabstop = 4                             -- insert 2 spaces for a tab
+vim.opt.tabstop = 4                             -- the number of spaces inserted for a tab
 vim.opt.cursorline = true                       -- highlight the current line
 vim.opt.number = true                           -- set numbered lines
 vim.opt.laststatus = 3                          -- only the last window will always have a status line
@@ -32,7 +32,7 @@ vim.opt.ruler = false                           -- hide the line and column numb
 vim.opt.numberwidth = 4                         -- minimal number of columns to use for the line number {default 4}
 vim.opt.signcolumn = "yes"                      -- always show the sign column, otherwise it would shift the text each time
 vim.opt.wrap = false                            -- display lines as one long line
-vim.opt.scrolloff = 8                           -- minimal number of screen lines to keep above and below the cursor
+-- vim.opt.scrolloff = 8                           -- minimal number of screen lines to keep above and below the cursor
 vim.opt.sidescrolloff = 8                       -- minimal number of screen columns to keep to the left and right of the cursor if wrap is `false`
 vim.opt.guifont = "monospace:h17"               -- the font used in graphical neovim applications
 vim.opt.fillchars.eob = " "                     -- show empty lines at the end of a buffer as ` ` {default `~`}
@@ -42,9 +42,25 @@ vim.opt.iskeyword:append "-"                    -- treats words with `-` as sing
 vim.opt.formatoptions:remove { "c", "r", "o" }  -- This is a sequence of letters which describes how automatic formatting is to be done
 vim.opt.linebreak = true
 vim.opt.foldenable = false                      -- disable folding by default
-vim.opt.foldmethod = "indent"                   -- proper folding for C/C++
-vim.opt.winbar = "%=%m %f"                      -- file name at top right corner
+-- vim.opt.foldmethod = "expr"                  -- proper folding for C/C++
+-- vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+-- vim.opt.syntax = enable                         -- requried for folding by syntax
+-- vim.opt.winbar = "%=%m %f"                      -- file name at top right corner
+vim.opt.winbar = "%{%v:lua.require'nvim-navic'.get_location()%}"                      -- file name at top right corner
 vim.opt.listchars = "eol:¬,tab:>·,trail:~,extends:>,precedes:<"             -- requried for checking formatting using :set list
+vim.opt.diffopt:append("iwhiteall")
+
+-- Function to set unique options based on filetype
+local function set_tab_options(filetype, options)
+  for option, value in pairs(options) do
+    local cmd = string.format("autocmd FileType %s setlocal %s=%s", filetype, option, value)
+    vim.cmd(cmd)
+  end
+end
+
+-- Options overrides for different filetypes
+set_tab_options("lua", {tabstop = 2, shiftwidth = 2})
+
 -- vim.opt.guicursor = "n:blinkon1"               -- make the cursor blink
 
 -- vim.opt.clipboard = unnamedplus may not work correctly without the following snippet
@@ -63,6 +79,7 @@ vim.opt.listchars = "eol:¬,tab:>·,trail:~,extends:>,precedes:<"             --
 --     }
 -- end
 
+-- https://vim.fandom.com/wiki/Avoid_scrolling_when_switch_buffers
 -- " Retain window position when moving across buffers
 -- " Save current view settings on a per-window, per-buffer basis.
 -- function! AutoSaveWinView()
@@ -90,4 +107,44 @@ vim.opt.listchars = "eol:¬,tab:>·,trail:~,extends:>,precedes:<"             --
 --     autocmd BufLeave * call AutoSaveWinView()
 --     autocmd BufEnter * call AutoRestoreWinView()
 -- endif
+
+-- -- Save current view settings on a per-window, per-buffer basis.
+-- local function AutoSaveWinView()
+--   -- create a table to store the view settings
+--   if vim.w.SavedBufView == nil then
+--     vim.w.SavedBufView = {}
+--   end
+--   -- get the current buffer number
+--   local buf = vim.api.nvim_buf_get_number(0)
+--   -- save the current window view
+--   vim.w.SavedBufView[buf] = vim.fn.winsaveview()
+-- end
+--
+-- -- Restore current view settings.
+-- local function AutoRestoreWinView()
+--   -- get the current buffer number
+--   local buf = vim.api.nvim_buf_get_number(0)
+--   -- check if the view settings exist for this buffer
+--   if vim.w.SavedBufView ~= nil and vim.w.SavedBufView[buf] ~= nil then
+--     -- get the current window view
+--     local v = vim.fn.winsaveview()
+--     -- check if the cursor is at the start of the file and not in diff mode
+--     local atStartOfFile = v.lnum == 1 and v.col == 0
+--     if atStartOfFile and not vim.o.diff then
+--       -- restore the window view
+--       vim.fn.winrestview(vim.w.SavedBufView[buf])
+--     end
+--     -- delete the view settings for this buffer
+--     vim.w.SavedBufView[buf] = nil
+--   end
+-- end
+--
+-- -- When switching buffers, preserve window view.
+-- -- check if the Neovim version is >= 0.5
+-- if vim.version().major >= 0.5 then
+--   -- use the vim.cmd function to execute vimscript commands
+--   -- use single quotes to avoid escaping double quotes
+--   vim.cmd('autocmd BufLeave * lua AutoSaveWinView()')
+--   vim.cmd('autocmd BufEnter * lua AutoRestoreWinView()')
+-- end
 

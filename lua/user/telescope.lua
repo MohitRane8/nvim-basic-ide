@@ -105,6 +105,7 @@ M.config = function ()
         include_current_line = true,
       },
       colorscheme = {
+        theme = "dropdown",
         enable_preview = true,
       }
     },

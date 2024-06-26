@@ -1,9 +1,6 @@
 -- default colorscheme (must be same as the plugin name)
--- to set a specific style, the same can be set in respective colorscheme setup function
--- FIXME: rainbow-delimiters plugin colors for brackets look bad with any other
--- colorscheme except catppuccin
-default = "catppuccin"
--- default = "vscode"
+local default_colorscheme = "github-theme"
+local default_colorscheme_flavor = "github_dark_tritanopia"
 
 -- colorschemes for specific filetypes loaded by folke/styler.nvim plugin
 -- colorscheme name can be a style variant like "kanagawa-dragon" for kanagawa colorscheme
@@ -163,7 +160,7 @@ for _, v in ipairs(M) do
     -- reference: https://github.com/folke/lazy.nvim/discussions/1167
     v.keys = {
       {
-        "<leader>cc",
+        "<leader>cs",
         function() -- prevent builtin colors from being displayed in the picker
           local target = vim.fn.getcompletion
 
@@ -180,7 +177,7 @@ for _, v in ipairs(M) do
     }
 
     -- make sure the default colorscheme loads at startup before other start plugins
-    if v.name == default then
+    if v.name == default_colorscheme then
       v.lazy = false
       v.priority = 1000
     end
@@ -193,8 +190,8 @@ for _, v in ipairs(M) do
       end
 
       -- apply default colorscheme which will be loaded at the startup
-      if v.name == default then
-        vim.cmd.colorscheme(v.name)
+      if v.name == default_colorscheme then
+        vim.cmd.colorscheme(default_colorscheme_flavor)
       end
     end
   end

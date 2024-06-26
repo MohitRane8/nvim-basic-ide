@@ -1,6 +1,7 @@
 require "options"
 require "keymaps"
 require "Lazy"
+require "userfunctions"
 require "autocommands"
 
 -- remove warnings from :checkhealth

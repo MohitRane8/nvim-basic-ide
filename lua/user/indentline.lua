@@ -6,8 +6,8 @@ local M = {
 
 M.opts = {
   -- char = "▏",   -- U+258F
-  -- char = "│",   -- U+2502
-  char = "┊",   -- U+250A
+  char = "│",   -- U+2502
+  -- char = "┊",   -- U+250A
   highlight = "Red",
   show_trailing_blankline_indent = false,
   show_first_indent_level = true,

@@ -17,20 +17,35 @@ vim.g.mapleader = " "
 --   command_mode = "c",
 
 -- Normal --
--- Neovim config source mapping
+-- Neovim config source mapping - doesn't work
 keymap("n", "<leader>tr", ":luafile %<CR>", opts)
 
+-- Non-Leader Remaps
+
+-- Original function: Undo line, New function: Redo
+keymap('n', 'U', ':redo<CR>', opts)
+
 -- Better scrolling
-keymap("n", "<C-d>", "<C-d>zz", opts)
-keymap("n", "<C-u>", "<C-u>zz", opts)
+keymap('n', '<C-d>', '<C-d>zz', opts)
+keymap('n', '<C-u>', '<C-u>zz', opts)
 
 -- Scrolling without cursor movement
-keymap("n", "<C-e>", "<C-e><C-e><C-e>", opts)
-keymap("n", "<C-y>", "<C-y><C-y><C-y>", opts)
+keymap('n', 'J', '<C-e><C-e><C-e>', opts)   -- join lines mapped to <C-e>
+keymap('n', 'K', '<C-y><C-y><C-y>', opts)   -- keyword lookup mapped to <C-p>
+
+-- Join lines
+keymap('n', '<C-e>', ':join<CR>', opts)     -- scroll line up mapped to J
+
+-- folke/flash.nvim
+-- "Flash" in 'o' mode allows direct command operations from current cursor location to jump location.
+keymap({'n', 'x', 'o'}, ';', '<cmd>lua require("flash").jump()<CR>', opts)          -- Flash
+-- keymap({'n', 'x', 'o'}, 'S', '<cmd>lua require("flash").treesitter()<CR>', opts)    -- Flash Treesitter
+-- keymap('o', 'r', '<cmd>lua require("flash").remote()<CR>', opts)                    -- Remote Flash
+-- keymap({'o', 'x'}, 'R', '<cmd>lua require("flash").treesitter_search()<CR>', opts)  -- Treesitter Search
+-- keymap('c', '<c-s>', '<cmd>lua require("flash").toggle()<CR>', opts)                -- Toggle Flash Search
 
 -- Deleting word in insert mode
 keymap("i", "<C-BS>", "<C-w>", opts)
-keymap("i", "<C-h>", "<C-w>", opts)
 
 -- Jumps to newer entry in tag stack
 -- Originally <C-y> is used to scroll up the file 1 line
@@ -47,12 +62,6 @@ keymap("n", "<C-Right>", ":vertical resize +2<CR>", opts)
 -- Only needed for Windows OS, required utility - dos2unix
 keymap("n", "<leader>v", ":w<CR>:!dos2unix '%:p'<CR><CR>:e<CR>", opts)
 
--- C++ only mapping, move to the top of the current function
--- and place it at the top of the screen
--- TODO: allow this only for .cpp and .c files
--- TODO: this doesn't work when function comment has blank lines in between
--- keymap("n", "<leader>p", "{][%jw^zczO][%{jzt][%b0j", opts)
---
 -- place the current function at the top of the screen, uses treesitter-textobjects plugin
 -- "[m" goes the the start of the current function
 -- If the cursor is on the first character of the function start, then "[m" jumps to previous function
@@ -169,6 +178,8 @@ keymap("n", "<leader>fs", ":lua require'telescope.builtin'.grep_string{use_regex
 -- keymap("n", "<leader>fs", ":Telescope grep_string search=<CR>", opts)   -- fuzzy searches but no regex
 -- find word under cursor
 keymap("n", "<leader>fw", ":Telescope grep_string<CR>", opts)   -- matches case and whole word, no regex
+-- find all symbols in the project (only those registered with LSP)
+keymap("n", "<leader>fan", ":Telescope lsp_dynamic_workspace_symbols<CR>", opts)
 -- find project
 keymap("n", "<leader>fp", ":Telescope projects<CR>", opts)
 -- NOTE: Listing treesitter symbols with telescope doesn't work within git worktrees.
@@ -216,10 +227,6 @@ keymap("n", "<leader>ft", "<cmd>lua require'telescope.builtin'.treesitter(requir
 -- telescope.builtin.current_buffer_fuzzy_find()
 --
 -- telescope.defaults.file_ignore_patterns
-
--- Comment
-keymap("n", "<leader>/", "<cmd>lua require('Comment.api').toggle.linewise.current()<CR>", opts)
-keymap("x", "<leader>/", "<esc><cmd>lua require('Comment.api').toggle.linewise(vim.fn.visualmode())<CR>", opts)
 
 -- Lsp Formatter
 keymap("n", "<leader>lf", "<cmd>lua vim.lsp.buf.format{ async = true }<cr>", opts)
@@ -275,3 +282,6 @@ keymap("v", "<leader>k", ":call InterestingWords('v')<CR>", opts)
 keymap("n", "<leader>K", ":call UncolorAllWords()<CR>", opts)
 keymap("n", "<leader>n", ":call WordNavigation(1)<CR>", opts)
 keymap("n", "<leader>N", ":call WordNavigation(0)<CR>", opts)
+
+-- Keymaps for user defined functions and commands
+keymap('v', '<leader>dt', ':CheckDiff<CR>', opts)

@@ -12,7 +12,7 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
   pattern = { "gitcommit", "markdown", "text" },
   callback = function()
     vim.opt_local.wrap = true
-    vim.opt_local.spell = true
+    vim.opt_local.spell = false
   end,
 })
 -- Automatically close tab/vim when nvim-tree is the last window in the tab
@@ -36,14 +36,6 @@ vim.api.nvim_create_autocmd({ "BufWritePost" }, {
     vim.lsp.codelens.refresh()
   end,
 })
-
--- -- Set specific colorscheme for certain filetypes
--- vim.api.nvim_create_autocmd({ "BufEnter" }, {
---   pattern = { "*.py" },
---   callback = function()
---     vim.cmd "colorscheme tokyonight"
---   end,
--- })
 
 -- This autocommand runs the function on every BufRead event
 vim.api.nvim_create_autocmd({ "BufEnter" }, {
@@ -145,6 +137,87 @@ vim.api.nvim_create_autocmd({ "BufReadPost" }, {
     end
   end,
 })
+
+-- Open man/help pages in vertical split instead of the default horizontal split
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "help",
+  command = "vert bo wincmd L"
+})
+
+-- Custom winbar for certain file types
+-- For code files, barbecue.nvim will be used for winbar.
+-- For filetypes excluded by barbecue.nvim, the default winbar set in options.lua will be used.
+-- For the following filetypes, custom titles in winbar would be used.
+vim.api.nvim_create_autocmd("BufEnter", {
+  callback = function()
+    local winid = vim.api.nvim_get_current_win()
+
+    if vim.bo.filetype == "NvimTree" then
+      vim.wo[winid].winbar = "%=File Explorer%="
+    elseif vim.bo.filetype == "DiffviewFiles" then
+      vim.wo[winid].winbar = "%=Source Control%="
+    elseif vim.bo.filetype == "DiffviewFileHistory" then
+      vim.wo[winid].winbar = "%=File History%="
+    end
+  end,
+})
+
+-- Disable status column for certain file types
+vim.api.nvim_create_autocmd("BufEnter", {
+  callback = function()
+    if vim.bo.filetype == "NvimTree" or vim.bo.filetype == "DiffviewFiles" then
+      vim.opt.statuscolumn = ""
+    end
+  end,
+})
+
+-- User Commands from user defined functions
+local userfunctions = require('userfunctions')
+
+-- Creates a new tab page to show diff between code/text.
+-- Usage:
+--    1. Select text A and copy it in default register.
+--    2. Select text B and call CheckDiff user command.
+--    This will create a new tab page and show diff A <--> B
+vim.api.nvim_create_user_command(
+  'CheckDiff',
+  function(opts)
+    userfunctions.check_diff(opts.line1, opts.line2)
+  end,
+  { range = true }
+)
+
+vim.api.nvim_create_user_command(
+  'ConvertAsciiToHex',
+  function()
+    userfunctions.ascii_to_hex()
+  end,
+  { range = true }
+)
+
+vim.api.nvim_create_user_command(
+  'ConvertHexToAscii',
+  function()
+    userfunctions.hex_to_ascii()
+  end,
+  { range = true }
+)
+
+vim.api.nvim_create_user_command(
+  'ConvertDecimalToHex',
+  function()
+    userfunctions.dec_to_hex()
+  end,
+  { range = true }
+)
+
+vim.api.nvim_create_user_command(
+  'ConvertHexToDecimal',
+  function()
+    userfunctions.hex_to_dec()
+  end,
+  { range = true }
+)
 
 -- vim.api.nvim_create_autocmd({ "BufLeave" }, {
 --   callback = function()

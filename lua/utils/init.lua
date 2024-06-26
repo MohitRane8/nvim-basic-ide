@@ -5,12 +5,12 @@ M.mason_servers = {
   "lua_ls@3.7.0",
   "pyright@1.1.325",
   -- "bashls@5.0.0",
-  -- "clangd@16.0.2",
+  "clangd@18.1.3",
 }
 
 -- servers not supported by Mason
 M.other_servers = {
-  "ccls",
+  -- "ccls",
 }
 
 M.all_servers = {}

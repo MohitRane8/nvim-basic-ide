@@ -20,6 +20,7 @@ function M.config()
       "NvimTree",
       "DiffviewFiles",
     },
+    -- large_file_cutoff = 1000,
   }
 end
 

@@ -4,13 +4,18 @@ local M = {
   event = "BufReadPost",
   config = function()
     require('rainbow-delimiters.setup').setup {
-      query = {
-        [''] = 'rainbow-delimiters',
-        lua = 'rainbow-blocks',
+      highlight = {
+        'RainbowDelimiterYellow',
+        'RainbowDelimiterBlue',
+        'RainbowDelimiterOrange',
+        'RainbowDelimiterGreen',
+        'RainbowDelimiterViolet',
+        'RainbowDelimiterCyan',
+        'RainbowDelimiterRed',
       },
     }
   end,
-  enabled = false,
+  enabled = true,
 }
 
 return M

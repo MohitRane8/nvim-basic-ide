@@ -15,7 +15,7 @@ M.config = function()
     -- symbols = { "━", "┃", "┏", "┓", "┗", "┛" },    -- heavy continuous border
     -- symbols = { "─", "│", "┌", "┐", "└", "┘" },    -- light continuous border
     -- symbols = { "─ ─", "|", "┌", "┐", "└", "┘" },  -- light long dotted border
-    symbols = { "╶", "┆", "┌", "┐", "└", "┘" },  -- light short dotted border
+    -- symbols = { "╶", "┆", "┌", "┐", "└", "┘" },  -- light short dotted border
   })
 end
 

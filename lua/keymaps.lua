@@ -117,9 +117,6 @@ keymap("v", ">", ">gv", opts)
 
 -- Plugins --
 
--- NvimTree
-keymap("n", "<leader>e", ":NvimTreeToggle<CR>", opts)
-
 -- FZF vim
 -- vim.api.nvim_create_user_command(
 --   'ProjectFiles',
@@ -181,7 +178,7 @@ keymap("n", "<leader>fw", ":Telescope grep_string<CR>", opts)   -- matches case 
 -- find all symbols in the project (only those registered with LSP)
 keymap("n", "<leader>fan", ":Telescope lsp_dynamic_workspace_symbols<CR>", opts)
 -- find project
-keymap("n", "<leader>fp", ":Telescope projects<CR>", opts)
+-- keymap("n", "<leader>fp", ":Telescope projects<CR>", opts)
 -- NOTE: Listing treesitter symbols with telescope doesn't work within git worktrees.
 -- As a workaround, use FZF-Lua functionality.
 -- -- find functions in a file
@@ -190,8 +187,6 @@ keymap("n", "<leader>fp", ":Telescope projects<CR>", opts)
 keymap("n", "<leader>fk", ":Telescope keymaps<CR>", opts)
 -- find buffers
 keymap("n", "<leader>fb", ":Telescope buffers<CR>", opts)
--- switch git worktree
-keymap("n", "<leader>fg", "<cmd>lua require('telescope').extensions.git_worktree.git_worktrees(require('telescope.themes').get_dropdown({ previewer = false}))<CR>", opts)
 
 -- TODO: telescope buffer manager
 -- TODO: vscode timeline
@@ -250,9 +245,6 @@ keymap('n', '<leader>td', '<cmd>lua require("gitsigns").toggle_deleted()<CR>', o
 -- Text object
 keymap({'o', 'x'}, 'ih', ':<C-U>lua require("gitsigns").select_hunk()<CR>', opts)
 
--- Diffview
-keymap('n', '<leader>hh', ':DiffviewOpen<CR>', opts)        -- toggle display of deleted lines
-
 -- kevinhwang91/nvim-hlslens
 keymap('n', 'n', '<cmd>execute("normal! " . v:count1 . "n")<CR><Cmd>lua require("hlslens").start()<CR>', opts)
 keymap('n', 'N', '<cmd>execute("normal! " . v:count1 . "N")<CR><Cmd>lua require("hlslens").start()<CR>', opts)
@@ -262,26 +254,11 @@ keymap('n', 'g*', 'g*<cmd>lua require("hlslens").start()<CR>', opts)
 keymap('n', 'g#', 'g#<cmd>lua require("hlslens").start()<CR>', opts)
 keymap('n', '<leader>l', '<cmd>noh<CR>', opts)
 
--- harpoon
-keymap('n', '<leader>jm', '<cmd>lua require("harpoon.mark").add_file()<CR>', opts)
-keymap('n', '<leader>jl', '<cmd>lua require("harpoon.ui").toggle_quick_menu()<CR>', opts)
-keymap('n', '<leader>ja', '<cmd>lua require("harpoon.ui").nav_file(1)<CR>', opts)
-keymap('n', '<leader>js', '<cmd>lua require("harpoon.ui").nav_file(2)<CR>', opts)
-keymap('n', '<leader>jd', '<cmd>lua require("harpoon.ui").nav_file(3)<CR>', opts)
-keymap('n', '<leader>jf', '<cmd>lua require("harpoon.ui").nav_file(4)<CR>', opts)
-keymap('n', '<leader>jg', '<cmd>lua require("harpoon.ui").nav_file(5)<CR>', opts)
--- keymap('n', '<leader>h', '<cmd>lua require("harpoon.ui").nav_next()', opts)
--- keymap('n', '<leader>h', '<cmd>lua require("harpoon.ui").nav_prev()', opts)
-
--- zen-mode
-keymap("n", "<leader>z", ":ZenMode<CR>", opts)
-
--- vim-interestingwords
-keymap("n", "<leader>k", ":call InterestingWords('n')<CR>", opts)
-keymap("v", "<leader>k", ":call InterestingWords('v')<CR>", opts)
-keymap("n", "<leader>K", ":call UncolorAllWords()<CR>", opts)
-keymap("n", "<leader>n", ":call WordNavigation(1)<CR>", opts)
-keymap("n", "<leader>N", ":call WordNavigation(0)<CR>", opts)
+-- Diagnostics
+keymap("n", "<leader>dl", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
+keymap("n", "<leader>dj", "<cmd>lua vim.diagnostic.goto_next({buffer=0})<cr>", opts)
+keymap("n", "<leader>dk", "<cmd>lua vim.diagnostic.goto_prev({buffer=0})<cr>", opts)
+keymap("n", "<leader>dh", "<cmd>lua vim.diagnostic.setloclist()<CR>", opts)
 
 -- Keymaps for user defined functions and commands
 keymap('v', '<leader>dt', ':CheckDiff<CR>', opts)

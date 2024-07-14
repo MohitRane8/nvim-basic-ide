@@ -14,9 +14,6 @@ local M = {
       "nvim-lua/plenary.nvim",
       commit = "9a0d3bf7b832818c042aaf30f692b081ddd58bd9",
     },
-    {
-      "ahmedkhalf/project.nvim",
-    },
   },
 }
 
@@ -113,9 +110,6 @@ M.config = function ()
 
   -- load fzf extension after telescope setup
   require('telescope').load_extension('fzf')
-
-  -- load git-worktree extension after telescope setup
-  require('telescope').load_extension('git_worktree')
 end
 
 return M

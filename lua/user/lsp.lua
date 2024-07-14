@@ -2,21 +2,13 @@ local M = {
   "neovim/nvim-lspconfig",
   commit = "649137cbc53a044bffde36294ce3160cb18f32c7",
   lazy = false,
-  event = { "BufReadPre" },
+  -- event = { "BufReadPre" },
   dependencies = {
+    "williamboman/mason-lspconfig.nvim",
     -- {
     --   "hrsh7th/cmp-nvim-lsp",
     --   commit = "0e6b2ed705ddcff9738ec4ea838141654f12eeef",
     -- },
-    {
-      "SmiteshP/nvim-navbuddy",
-      -- commit = "f137a3466a6cd1965cdcc5398daff54e66eebbe5",
-      -- dependencies = {
-      --     "SmiteshP/nvim-navic",
-      --     "MunifTanjim/nui.nvim"
-      -- },
-      -- opts = { lsp = { auto_attach = true } }
-    },
   },
 }
 
@@ -35,15 +27,11 @@ function M.config()
     keymap(bufnr, "n", "<C-p>", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
     keymap(bufnr, "n", "gI", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
     keymap(bufnr, "n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
-    keymap(bufnr, "n", "<leader>li", "<cmd>LspInfo<cr>", opts)
-    keymap(bufnr, "n", "<leader>lI", "<cmd>Mason<cr>", opts)
+    -- keymap(bufnr, "n", "<leader>li", "<cmd>LspInfo<cr>", opts)
+    -- keymap(bufnr, "n", "<leader>lI", "<cmd>Mason<cr>", opts)
     keymap(bufnr, "n", "<leader>la", "<cmd>lua vim.lsp.buf.code_action()<cr>", opts)
-    keymap(bufnr, "n", "<leader>dl", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
-    keymap(bufnr, "n", "<leader>dj", "<cmd>lua vim.diagnostic.goto_next({buffer=0})<cr>", opts)
-    keymap(bufnr, "n", "<leader>dk", "<cmd>lua vim.diagnostic.goto_prev({buffer=0})<cr>", opts)
     keymap(bufnr, "n", "<leader>lr", "<cmd>lua vim.lsp.buf.rename()<cr>", opts)
     keymap(bufnr, "n", "<leader>ls", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
-    keymap(bufnr, "n", "<leader>lq", "<cmd>lua vim.diagnostic.setloclist()<CR>", opts)
   end
 
   local lspconfig = require "lspconfig"

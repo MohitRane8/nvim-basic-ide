@@ -1,7 +1,12 @@
 local M = {
   "xiyaowong/transparent.nvim",
   commit = "3af6232c8d39d51062702e875ff6407c1eeb0391",  -- commit date: 09-03-2023
-  event = "VimEnter",
+  enabled = true,                                       -- 'false' will not load the plugin
+}
+
+-- Lazy load on following commands
+M.cmd = {
+  "TransparentToggle",
 }
 
 M.config = function()

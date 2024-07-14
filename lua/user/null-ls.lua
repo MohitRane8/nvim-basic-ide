@@ -8,6 +8,7 @@ local M = {
       commit = "9a0d3bf7b832818c042aaf30f692b081ddd58bd9",
     },
   },
+  enabled = true,
 }
 
 function M.config()
@@ -21,6 +22,7 @@ function M.config()
   null_ls.setup {
     debug = false,
     sources = {
+      -- diagnostics.markdownlint,
       formatting.black.with { extra_args = { "--fast" } },
       diagnostics.flake8,
     },

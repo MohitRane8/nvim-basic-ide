@@ -38,10 +38,11 @@ vim.api.nvim_create_autocmd({ "BufWritePost" }, {
 })
 
 -- This autocommand runs the function on every BufRead event
-vim.api.nvim_create_autocmd({ "BufEnter" }, {
+-- vim.api.nvim_create_autocmd({ "BufEnter" }, {
+vim.api.nvim_create_autocmd({ "BufReadPre" }, {
   pattern = { "*.list" },
   callback = function()
-    vim.cmd("set filetype=sh")
+    vim.cmd("set filetype=asm")
   end,
 })
 vim.api.nvim_create_autocmd({ "BufEnter" }, {
@@ -71,11 +72,11 @@ vim.api.nvim_create_autocmd({ "BufEnter" }, {
 --   nested = true,
 -- })
 
-vim.api.nvim_create_autocmd({ "VimEnter" }, {
-  callback = function()
-    vim.cmd "hi link illuminatedWord LspReferenceText"
-  end,
-})
+-- vim.api.nvim_create_autocmd({ "VimEnter" }, {
+--   callback = function()
+--     vim.cmd "hi link illuminatedWord LspReferenceText"
+--   end,
+-- })
 
 -- Disable diagnostics for C/C++ because of LSP issues
 vim.api.nvim_create_autocmd({ "BufEnter" }, {
@@ -97,14 +98,27 @@ vim.api.nvim_create_autocmd({ "BufEnter" }, {
 --   end,
 -- })
 
-vim.api.nvim_create_autocmd({ "BufWinEnter" }, {
-  callback = function()
-    local line_count = vim.api.nvim_buf_line_count(0)
-    if line_count >= 5000 then
-      vim.cmd "IlluminatePauseBuf"
-    end
-  end,
-})
+-- Create an autocommand group
+-- local augroup = vim.api.nvim_create_augroup("LargeFile", { clear = true })
+
+-- Define the autocommand
+-- vim.api.nvim_create_autocmd("BufReadPre", {
+-- -- vim.api.nvim_create_autocmd("BufReadPost", {
+--   -- group = augroup,
+--   pattern = "*.list",
+--   callback = function()
+--     -- vim.cmd("set filetype=c")
+--     local stats = vim.loop.fs_stat(vim.api.nvim_buf_get_name(0))
+--     if stats and stats.size > 100000 then  -- 100 KB, Adjust the size threshold as needed
+--       -- vim.b.large_buf = true
+--       -- vim.cmd("IndentBlanklineDisable")  -- If using indent-blankline.nvim
+--       -- vim.cmd("HlSearchLensDisable")  -- If using hlsearch-lens.nvim
+--       vim.cmd("TSDisable")  -- If using hlsearch-lens.nvim
+--       -- vim.cmd("syntax on")
+--       -- vim.lsp.stop_client(vim.lsp.get_active_clients())
+--     end
+--   end,
+-- })
 
 -- Avoid scrolling when switch buffers
 -- https://vim.fandom.com/wiki/Avoid_scrolling_when_switch_buffers

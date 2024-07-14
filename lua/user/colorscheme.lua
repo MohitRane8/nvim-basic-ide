@@ -1,6 +1,8 @@
 -- default colorscheme (must be same as the plugin name)
-local default_colorscheme = "github-theme"
-local default_colorscheme_flavor = "github_dark_tritanopia"
+-- local default_colorscheme = "github-theme"
+-- local default_colorscheme_flavor = "github_dark_tritanopia"
+local default_colorscheme = "catppuccin"
+local default_colorscheme_flavor = "catppuccin"
 
 -- colorschemes for specific filetypes loaded by folke/styler.nvim plugin
 -- colorscheme name can be a style variant like "kanagawa-dragon" for kanagawa colorscheme
@@ -18,12 +20,12 @@ local M = {
   -- Colorschemes
   {
     "Mofiqul/vscode.nvim",
-    commit = "dc5f37603ada51db13bc4009cbee628c5857a274",
+    commit = "46212834b32866ce45479f885ca82d2259044f46",    -- commit date: Jun 22, 2024
     name = "vscode",
   },
   {
     "ribru17/bamboo.nvim",
-    commit = "2c5a7442f8db3dcc3f5175f0bed73675e26e3931",
+    commit = "8d86d4b5dec2e35392d53a82602d4f2b12e3f014",    -- commit date: Jul 6, 2024
     name = "bamboo",
     setup = function()
       local bamboo = require "bamboo"
@@ -39,17 +41,17 @@ local M = {
   },
   {
     "projekt0n/github-nvim-theme",
-    commit = "d92e1143e5aaa0d7df28a26dd8ee2102df2cadd8",
+    commit = "4f44a5c930372c85483d02700f332d34417e50b2",    -- commit date: Jun 25, 2024
     name = "github-theme",
   },
   {
     "oxfist/night-owl.nvim",
-    commit = "b9205dac99317b9ece31636a0414d35efb957aca",
+    commit = "131641a516085c5b3cacc8022581902e9f2f14af",    -- commit date: Jun 27, 2024
     name = "night-owl",
   },
   {
     "EdenEast/nightfox.nvim",
-    commit = "57b8154aba0de8ced36722ea2674a7b97e4f468f",    -- v3.9.3
+    commit = "df75a6a94910ae47854341d6b5a6fd483192c0eb",    -- commit date: Apr 29, 2024
     name = "nightfox",
     setup = function()
       local nightfox = require "nightfox"
@@ -68,7 +70,7 @@ local M = {
   },
   {
     "catppuccin/nvim",
-    commit = "b573866ef64122119668f375ebb794bcb3b518e2",    -- v1.4.0
+    commit = "2d3419c2aead379b7d1854d32458f20ffaa58562",    -- commit date: Jul 8, 2024
     name = "catppuccin",
     setup = function()
       local catppuccin = require "catppuccin"
@@ -80,7 +82,7 @@ local M = {
   },
   {
     "folke/tokyonight.nvim",
-    commit = "e52c41314e83232840d6970e6b072f9fba242eb9",
+    commit = "0a84c2df1dc65610ee0d9b516b2fb342e4b0ed6f",    -- commit date: Jul 8, 2024
     name = "tokyonight",
     setup = function()
       local tokyonight = require "tokyonight"
@@ -94,7 +96,7 @@ local M = {
     -- it will allow to disable bold text for boolean values
     -- https://github.com/rebelot/kanagawa.nvim/pull/181
     "rebelot/kanagawa.nvim",
-    commit = "ab41956c4559c3eb21e713fcdf54cda1cb6d5f40",
+    commit = "e5f7b8a804360f0a48e40d0083a97193ee4fcc87",    -- commit date: Jul 3, 2024
     name = "kanagawa",
     setup = function()
       local kanagawa = require "kanagawa"
@@ -111,7 +113,7 @@ local M = {
   },
   {
     "loctvl842/monokai-pro.nvim",
-    commit = "e7b38bdb95fc144456703bb0ff5692c68093cc8e",
+    commit = "2bad2a92fe0ff6c8581d33a853a1b17592b83239",    -- commit date: May 25, 2024
     name = "monokai-pro",
     setup = function()
       local monokai = require "monokai-pro"

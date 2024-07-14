@@ -16,6 +16,7 @@ local M = {
     },
   },
   config = true,
+  enabled = true,
 }
 
 vim.api.nvim_create_autocmd({

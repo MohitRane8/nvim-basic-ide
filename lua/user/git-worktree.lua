@@ -1,19 +1,20 @@
 local M = {
   "ThePrimeagen/git-worktree.nvim",
   commit = "f247308e68dab9f1133759b05d944569ad054546",  -- commit date: 09-18-2023
-  event = "VeryLazy",
+  enabled = true,                                       -- 'false' will not load the plugin
   dependencies = {
-    {
-      "nvim-telescope/telescope.nvim",
-      commit = "40c31fdde93bcd85aeb3447bb3e2a3208395a868",
-    },
+    "nvim-telescope/telescope.nvim",
   },
-  enabled = true,
+}
+
+-- Lazy load on following keymaps
+M.keys = {
+  { "<leader>fg", "<cmd>lua require('telescope').extensions.git_worktree.git_worktrees(require('telescope.themes').get_dropdown({ previewer = false}))<CR>", silent = true, desc = "[git-worktree] [telescope] list worktrees" },
 }
 
 function M.config()
-  require("git-worktree").setup({
-  })
+  require("telescope").load_extension("git_worktree")
+  require("git-worktree").setup()
 end
 
 return M

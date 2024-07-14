@@ -1,7 +1,12 @@
 local M = {
   "nvim-tree/nvim-tree.lua",
   commit = "4054fc4be31bbb34da3a96be1cc03e09aa13bbbb",
-  event = "VeryLazy",
+  enabled = true,                                       -- 'false' will not load the plugin
+}
+
+-- Lazy load on following keymaps
+M.keys = {
+  { "<leader>e", ":NvimTreeToggle<CR>", silent = true, desc = "[nvim-tree] open file tree" },
 }
 
 local function on_attach(bufnr)

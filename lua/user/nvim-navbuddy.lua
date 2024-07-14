@@ -1,7 +1,7 @@
 local M = {
   "SmiteshP/nvim-navbuddy",
   commit = "f137a3466a6cd1965cdcc5398daff54e66eebbe5",  -- commit date: 09-14-2023
-  event = "VeryLazy",
+  enabled = false,                                       -- 'false' will not load the plugin
   dependencies = {
     {
       "neovim/nvim-lspconfig",
@@ -16,6 +16,11 @@ local M = {
       commit = "c0c8e347ceac53030f5c1ece1c5a5b6a17a25b32",
     },
   },
+}
+
+-- Lazy load on following commands
+M.cmd = {
+  "Navbuddy",
 }
 
 function M.config()

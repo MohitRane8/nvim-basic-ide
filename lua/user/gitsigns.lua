@@ -1,8 +1,28 @@
 local M = {
   "lewis6991/gitsigns.nvim",
   commit = "ec4742a7eebf68bec663041d359b95637242b5c3",
-  event = "BufReadPre",
+  enabled = true,                                       -- 'false' will not load the plugin
 }
+
+-- -- Lazy load on following keymaps
+-- M.keys = {
+--   { "]c", "<cmd>lua require('gitsigns').next_hunk()<CR>",                         silent = true, desc = "[gitsigns] go to next git hunk" },
+--   { "[c", "<cmd>lua require('gitsigns').prev_hunk()<CR>",                         silent = true, desc = "[gitsigns] go to previous git hunk" },
+--   { "<leader>hs", "<cmd>lua require('gitsigns').stage_hunk()<CR>",                silent = true, desc = "[gitsigns] stage git hunk" },
+--   { "<leader>hr", "<cmd>lua require('gitsigns').reset_hunk()<CR>",                silent = true, desc = "[gitsigns] reset git hunk" },
+--   { "<leader>hS", "<cmd>lua require('gitsigns').stage_buffer()<CR>",              silent = true, desc = "[gitsigns] stage buffer" },
+--   { "<leader>hu", "<cmd>lua require('gitsigns').undo_stage_hunk()<CR>",           silent = true, desc = "[gitsigns] undo stage buffer" },
+--   { "<leader>hR", "<cmd>lua require('gitsigns').reset_buffer()<CR>",              silent = true, desc = "[gitsigns] reset all git hunks in buffer" },
+--   { "<leader>hp", "<cmd>lua require('gitsigns').preview_hunk_inline()<CR>",       silent = true, desc = "[gitsigns] preview git hunk inline" },
+--   { "<leader>hb", "<cmd>lua require('gitsigns').blame_line()<CR>",                silent = true, desc = "[gitsigns] ?" },
+--   { "<leader>tb", "<cmd>lua require('gitsigns').toggle_current_line_blame()<CR>", silent = true, desc = "[gitsigns] ?" },
+--   { "<leader>hd", "<cmd>lua require('gitsigns').diffthis()<CR>",                  silent = true, desc = "[gitsigns] diff with index" },
+--   { "<leader>hD", "<cmd>lua require('gitsigns').diffthis("~")<CR>",               silent = true, desc = "[gitsigns] diff with working tree" },
+--   { "<leader>td", "<cmd>lua require('gitsigns').toggle_deleted()<CR>",            silent = true, desc = "[gitsigns] toggle display of deleted lines" },
+--   -- Text object
+--   -- TEST: check if the following works? Not sure if the 'mode' is written correctly.
+--   { "ih", ":<C-U>lua require('gitsigns').select_hunk()<CR>", mode = {"o", "x"},   silent = true, desc = "[gitsigns] ?" },
+-- }
 
 M.opts = {
   signs = {

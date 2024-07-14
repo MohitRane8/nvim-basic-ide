@@ -2,6 +2,7 @@ local M = {
   "RRethy/vim-illuminate",
   commit = "d6ca7f77eeaf61b3e6ce9f0e5a978d606df44298",
   event = "VeryLazy",
+  enabled = true,
 }
 
 function M.config()
@@ -20,7 +21,7 @@ function M.config()
       "NvimTree",
       "DiffviewFiles",
     },
-    -- large_file_cutoff = 1000,
+    large_file_cutoff = 10000,
   }
 end
 

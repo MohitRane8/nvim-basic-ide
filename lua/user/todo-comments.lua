@@ -1,7 +1,7 @@
 local M = {
   "folke/todo-comments.nvim",
   commit = "8febc60a76feefd8203077ef78b6a262ea1a41f9",  -- release 1.1.0
-  event = "BufReadPre",
+  event = "BufEnter",
   dependencies = {
     {
       "nvim-lua/plenary.nvim",

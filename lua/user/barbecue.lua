@@ -43,6 +43,8 @@ function M.config()
   local lualine_theme = require('lualine.themes.auto')
   -- local git_stats = vim.b.gitsigns_status_dict
 
+  vim.api.nvim_set_hl(0, 'my_barbecue_lead_custom_section', { fg = lualine_theme.insert.a.bg, bg = lualine_theme.normal.c.bg, bold = true })
+
   require('barbecue').setup({
     theme = {
       normal = { bg = lualine_theme.normal.c.bg },
@@ -71,9 +73,9 @@ function M.config()
 
       -- For current window, show active status, else show inactive status
       if winnr == current_win  then
-        return( { { '   ', 'lualine_a_insert' }, { '  ', 'lualine_c_normal' } } )
+        return( { { '  ', 'my_barbecue_lead_custom_section' }, { ' ' } } )   -- other icons:  ,  , 
       else
-        return( { { '     ', 'lualine_c_normal' } } )
+        return( '   ' )  -- other icons:  
       end
     end,
     -- custom_section = function(bufnr, winnr)

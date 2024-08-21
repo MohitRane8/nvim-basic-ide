@@ -1,8 +1,8 @@
 -- default colorscheme (must be same as the plugin name)
 -- local default_colorscheme = "github-theme"
 -- local default_colorscheme_flavor = "github_dark_tritanopia"
-local default_colorscheme = "catppuccin"
-local default_colorscheme_flavor = "catppuccin"
+local default_colorscheme = "bamboo"
+local default_colorscheme_flavor = "bamboo"
 
 -- colorschemes for specific filetypes loaded by folke/styler.nvim plugin
 -- colorscheme name can be a style variant like "kanagawa-dragon" for kanagawa colorscheme

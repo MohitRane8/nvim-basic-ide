@@ -1,20 +1,23 @@
 local M = {
   "lukas-reineke/indent-blankline.nvim",
-  commit = "8299fe7703dfff4b1752aeed271c3b95281a952d",
+  commit = "e10626f7fcd51ccd56d7ffc00883ba7e0aa28f78",    -- commit data: 2025-01-20
   event = "BufReadPre",
+  main = "ibl",
 }
 
 M.opts = {
-  -- char = "▏",   -- U+258F
-  char = "│",   -- U+2502
-  -- char = "┊",   -- U+250A
-  highlight = "Red",
-  show_trailing_blankline_indent = false,
-  show_first_indent_level = true,
-  use_treesitter = true,
-  show_current_context = false,
-  buftype_exclude = { "terminal", "nofile", "telescope" },
-  filetype_exclude = { "TelescopePrompt", "NvimTree", "DiffviewFiles", "help" },
+  indent = {
+    -- char = "▏",   -- U+258F
+    -- char = "│",   -- U+2502
+    -- char = "┊",   -- U+250A
+  },
+  exclude = {
+    filetypes = { "TelescopePrompt", "NvimTree", "DiffviewFiles", "help" },
+    buftypes = { "terminal", "nofile", "telescope", "help" },
+  },
+  scope = {
+    enabled = false,
+  }
 }
 
 return M

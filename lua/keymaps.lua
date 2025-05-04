@@ -74,7 +74,7 @@ keymap("n", "<leader>p", "l[mj{jzt", { silent = true, remap = true })
 -- keymap("n", "<leader>h", "<cmd>nohlsearch<CR>", opts)
 
 -- Close buffers
-keymap("n", "<S-q>", "<cmd>Bdelete!<CR>", opts)
+keymap("n", "<S-q>", "<cmd>bdelete<CR>", opts)
 
 -- Better paste
 keymap("v", "p", "P", opts)
@@ -262,3 +262,9 @@ keymap("n", "<leader>dh", "<cmd>lua vim.diagnostic.setloclist()<CR>", opts)
 
 -- Keymaps for user defined functions and commands
 keymap('v', '<leader>dt', ':CheckDiff<CR>', opts)
+
+-- Find and replace
+-- First copy the text to be replaced, then select the text in which
+-- replacement is to be done and then press <leader>fh
+keymap('n', '<leader>fh', ':%s/<C-R>"//g<Left><Left>', opts)
+keymap('v', '<leader>fh', ':s/<C-R>"//g<Left><Left>', opts)

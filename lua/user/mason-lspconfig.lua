@@ -6,7 +6,7 @@ local M = {
   dependencies = {
     {
       "williamboman/mason.nvim",
-      commit = "4546dec8b56bc56bc1d81e717e4a935bc7cd6477",
+      commit = "fc98833b6da5de5a9c5b1446ac541577059555be",  -- commit date: 2025-02-15
     },
   },
 }

@@ -11,7 +11,7 @@ M.config = function()
       -- rainbow = { enabled = true },    -- useful for flash treesitter
     },
     modes = {
-      search = { enabled = true },
+      search = { enabled = false },
     },
     -- remote_op = {
     --   restore = true,

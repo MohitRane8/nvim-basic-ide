@@ -40,6 +40,12 @@ vim.api.nvim_create_autocmd({ "BufWritePost" }, {
 -- This autocommand runs the function on every BufRead event
 -- vim.api.nvim_create_autocmd({ "BufEnter" }, {
 vim.api.nvim_create_autocmd({ "BufReadPre" }, {
+  pattern = { "lfrc" },
+  callback = function()
+    vim.cmd("set filetype=sh")
+  end,
+})
+vim.api.nvim_create_autocmd({ "BufReadPre" }, {
   pattern = { "*.list" },
   callback = function()
     vim.cmd("set filetype=asm")
@@ -139,18 +145,19 @@ vim.api.nvim_create_autocmd({ "BufEnter" }, {
   end
 })
 
--- Set folding method to treesitter when treesitter is available.
--- When not available, use ident folding method.
-vim.api.nvim_create_autocmd({ "BufReadPost" }, {
-  callback = function()
-    if require("nvim-treesitter.parsers").has_parser() then
-      vim.opt.foldmethod = "expr"
-      vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
-    else
-      vim.opt.foldmethod = "indent"
-    end
-  end,
-})
+-- Disabled the following after installing kevinhwang91/nvim-ufo plugin
+-- -- Set folding method to treesitter when treesitter is available.
+-- -- When not available, use indent folding method.
+-- vim.api.nvim_create_autocmd({ "BufReadPost" }, {
+--   callback = function()
+--     if require("nvim-treesitter.parsers").has_parser() then
+--       vim.opt.foldmethod = "expr"
+--       vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+--     else
+--       vim.opt.foldmethod = "indent"
+--     end
+--   end,
+-- })
 
 -- Open man/help pages in vertical split instead of the default horizontal split
 vim.api.nvim_create_autocmd("FileType", {
@@ -172,6 +179,8 @@ vim.api.nvim_create_autocmd("BufEnter", {
       vim.wo[winid].winbar = "%=Source Control%="
     elseif vim.bo.filetype == "DiffviewFileHistory" then
       vim.wo[winid].winbar = "%=File History%="
+    elseif vim.bo.filetype == "copilot-chat" then
+      vim.wo[winid].winbar = "%=Copilot Chat%="
     end
   end,
 })

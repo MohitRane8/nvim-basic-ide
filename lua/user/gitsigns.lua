@@ -1,7 +1,8 @@
 local M = {
   "lewis6991/gitsigns.nvim",
-  commit = "ec4742a7eebf68bec663041d359b95637242b5c3",
+  commit = "6668f379ca634c36b8e11453118590b91bf8b295",  -- 2025-02-18
   enabled = true,                                       -- 'false' will not load the plugin
+  event = "VeryLazy",
 }
 
 -- -- Lazy load on following keymaps

@@ -41,11 +41,16 @@ vim.opt.shortmess:append "c"                    -- hide all the completion messa
 vim.opt.whichwrap:append "<,>,[,],h,l"          -- keys allowed to move to the previous/next line when the beginning/end of line is reached
 vim.opt.formatoptions:remove { "c", "r", "o" }  -- This is a sequence of letters which describes how automatic formatting is to be done
 vim.opt.linebreak = true
-vim.opt.foldenable = false                      -- disable folding by default
--- vim.opt.syntax = enable                         -- requried for folding by syntax
 vim.opt.winbar = "%=%f%="                       -- display the filename in the middle of the winbar
 vim.opt.listchars = "eol:¬,tab:>·,trail:~,extends:>,precedes:<"             -- requried for checking formatting using :set list
 vim.opt.diffopt:append("iwhiteall")
+
+-- Options for kevinhwang91/nvim-ufo
+vim.opt.foldcolumn = '0'                        -- disable fold column
+vim.opt.foldlevel = 99                          -- open all folds by default
+vim.opt.foldlevelstart = 99                     -- open all folds by default
+vim.opt.foldenable = true                       -- enable folding by default
+-- vim.opt.foldmethod = "manual"                   -- control folds manually
 
 -- Function to set unique options based on filetype
 local function set_tab_options(filetype, options)

@@ -1,14 +1,15 @@
 local M = {
   "nvim-telescope/telescope.nvim",
-  -- commit = "40c31fdde93bcd85aeb3447bb3e2a3208395a868", -- old commit - used for a very long time and it all works except folding with treesitter.
-  commit = "1e591885751d255b12c3649253cb6c2838e2c724",    -- commit date: 03-23-2024
+  -- commit = "1e591885751d255b12c3649253cb6c2838e2c724",    -- commit date: 03-23-2024
+  commit = "78857db9e8d819d3cc1a9a7bdc1d39d127a36495",    -- commit date: 02-11-2025
   event = "VimEnter",
   cmd = { "Telescope" },
   dependencies = {
     {
       "nvim-telescope/telescope-fzf-native.nvim",
       commit = "6c921ca12321edaa773e324ef64ea301a1d0da62",
-      build = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build"
+      -- build = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build"
+      build = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release"
     },
     {
       "nvim-lua/plenary.nvim",

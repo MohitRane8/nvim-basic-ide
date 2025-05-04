@@ -78,7 +78,7 @@ function M.config()
     -- },
     view = {
       width = 35,
-      side = "left",
+      side = "right",
     },
     actions = {
       open_file = {

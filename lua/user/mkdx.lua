@@ -15,7 +15,7 @@ M.init = function()
       shift = 0,
     },
     tab = {
-      enble = 1,
+      enable = 1,
     }
   }
 end

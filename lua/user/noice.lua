@@ -1,6 +1,6 @@
 local M = {
   "folke/noice.nvim",
-  commit = "88ac36864b5976a64b14a8f156c616f41b32f228",  -- commit date: 06-18-2024
+  commit = "0427460c2d7f673ad60eb02b35f5e9926cf67c59",  -- commit date: 2025-02-11
   event = "VeryLazy",
   dependencies = {
     -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries

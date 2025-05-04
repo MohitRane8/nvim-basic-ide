@@ -1,8 +1,19 @@
 -- default colorscheme (must be same as the plugin name)
 -- local default_colorscheme = "github-theme"
 -- local default_colorscheme_flavor = "github_dark_tritanopia"
-local default_colorscheme = "bamboo"
-local default_colorscheme_flavor = "bamboo"
+-- local default_colorscheme_flavor = "github_dark"
+-- local default_colorscheme = "kanagawa"
+-- local default_colorscheme_flavor = "kanagawa-wave"
+local default_colorscheme = "gruvbox"
+local default_colorscheme_flavor = "gruvbox"
+-- local default_colorscheme = "nightfox"
+-- local default_colorscheme_flavor = "duskfox"
+-- local default_colorscheme_flavor = "dayfox"
+-- local default_colorscheme = "bamboo"
+-- local default_colorscheme_flavor = "bamboo-multiplex"
+-- local default_colorscheme = "catppuccin"
+-- local default_colorscheme_flavor = "catppuccin-mocha"
+-- local default_colorscheme_flavor = "catppuccin-macchiato"
 
 -- colorschemes for specific filetypes loaded by folke/styler.nvim plugin
 -- colorscheme name can be a style variant like "kanagawa-dragon" for kanagawa colorscheme
@@ -11,9 +22,9 @@ local default_colorscheme_flavor = "bamboo"
 local styler_themes = {
   -- c = { colorscheme = "catppuccin" },
   -- cpp = { colorscheme = "catppuccin" },
-  python = { colorscheme = "nightfox" },
+  -- python = { colorscheme = "nightfox" },
   -- lua = { colorscheme = "nightfox" },
-  help = { colorscheme = "duskfox", background = "dark" },
+  -- help = { colorscheme = "duskfox", background = "dark" },
 }
 
 local M = {
@@ -129,6 +140,17 @@ local M = {
           annotation = { italic = false },
           tag_attribute = { italic = false }, -- attribute of tag in reactjs
         },
+      })
+    end,
+  },
+  {
+    "ellisonleao/gruvbox.nvim",
+    commit = "15958f5ee43e144856cd2084ce6c571bfdb44504",    -- commit date: 2025-03-05
+    name = "gruvbox",
+    setup = function ()
+      local gruvbox = require "gruvbox"
+      gruvbox.setup({
+        contrast = "hard",
       })
     end,
   },

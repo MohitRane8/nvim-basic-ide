@@ -1,6 +1,6 @@
 local M = {
   "rcarriga/nvim-notify",
-  commit = "d333b6f167900f6d9d42a59005d82919830626bf",  -- commit date: 05-17-2024
+  commit = "b5825cf9ee881dd8e43309c93374ed5b87b7a896",  -- commit date: 2025-04-13
   event = "VeryLazy",
 }
 

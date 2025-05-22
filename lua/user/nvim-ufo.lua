@@ -4,7 +4,7 @@ local M = {
   event = "VeryLazy",
   dependencies = {
     "kevinhwang91/promise-async",
-    commit = "119e8961014c9bfaf1487bf3c2a393d254f337e2",  -- commit data: 2024-08-4
+    commit = "119e8961014c9bfaf1487bf3c2a393d254f337e2",  -- commit date: 2024-08-4
   },
   enabled = true,
 }

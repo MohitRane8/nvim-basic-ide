@@ -1,6 +1,6 @@
 local M = {
   "hiphish/rainbow-delimiters.nvim",
-  commit = "161eb67a82ee269d1037df64c6d5a05bd5860d32",  -- commit date: 02-22-2024
+  commit = "55ad4fb76ab68460f700599b7449385f0c4e858e",  -- commit date: 2025-04-16
   event = "BufReadPost",
   config = function()
     require('rainbow-delimiters.setup').setup {

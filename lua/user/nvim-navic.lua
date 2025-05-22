@@ -1,13 +1,8 @@
 local M = {
   "SmiteshP/nvim-navic",
-  commit = "0ffa7ffe6588f3417e680439872f5049e38a24db",  -- commit date: 09-18-2023
+  commit = "f887d794a0f4594882814d7780980a949200a238",  -- commit date: 2025-05-09
   event = "VeryLazy",
-  -- dependencies = {
-  --   {
-  --     "neovim/nvim-lspconfig",
-  --     commit = "649137cbc53a044bffde36294ce3160cb18f32c7",
-  --   },
-  -- },
+  enabled = true,
 }
 
 function M.config()

@@ -2,12 +2,12 @@ local M = {
   "nvim-treesitter/nvim-treesitter",
   -- commit = "226c1475a46a2ef6d840af9caa0117a439465500", -- old commit - used for a very long time and it works but latest rainbow-delimiters.nvim doesn't work with this.
   -- commit = "ede5b461c9e11404b5ba0a2ba452fffaaf252907",    -- commit date: 02-25-2024
-  commit = "f197a15b0d1e8d555263af20add51450e5aaa1f0",    -- commit date: 01-19-2024
+  -- commit = "f197a15b0d1e8d555263af20add51450e5aaa1f0",    -- commit date: 01-19-2024
+  commit = "066fd6505377e3fd4aa219e61ce94c2b8bdb0b79",    -- commit date: 2025-05-12
   event = "BufReadPost",
   dependencies = {
     {
       "nvim-tree/nvim-web-devicons",
-      commit = "e283ab937e0197b37ec5d8013e49495193407324",
     },
   },
   enabled = true,

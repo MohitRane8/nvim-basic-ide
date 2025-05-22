@@ -1,6 +1,6 @@
 local M = {
   "MunifTanjim/nui.nvim",
-  commit = "322978c734866996274467de084a95e4f9b5e0b1",  -- commit date: 06-05-2024
+  commit = "f535005e6ad1016383f24e39559833759453564e",  -- commit date: 2025-05-03
   event = "VeryLazy",
 }
 

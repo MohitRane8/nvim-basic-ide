@@ -1,7 +1,7 @@
 local M = {
   "lewis6991/gitsigns.nvim",
-  commit = "6668f379ca634c36b8e11453118590b91bf8b295",  -- 2025-02-18
-  enabled = true,                                       -- 'false' will not load the plugin
+  commit = "8b729e489f1475615dc6c9737da917b3bc163605",  -- commit date: 2025-05-21
+  enabled = true,
   event = "VeryLazy",
 }
 

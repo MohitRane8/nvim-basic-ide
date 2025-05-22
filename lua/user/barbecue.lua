@@ -5,11 +5,9 @@ local M = {
   dependencies = {
     {
       "SmiteshP/nvim-navic",
-      commit = "0ffa7ffe6588f3417e680439872f5049e38a24db",
     },
     {
       "nvim-tree/nvim-web-devicons",
-      commit = "e283ab937e0197b37ec5d8013e49495193407324",
     },
     {
       "nvim-lualine/lualine.nvim",    -- Only required for theme colors

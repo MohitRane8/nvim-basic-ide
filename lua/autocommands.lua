@@ -36,13 +36,6 @@ vim.api.nvim_create_autocmd({ "TextYankPost" }, {
   end,
 })
 
-vim.api.nvim_create_autocmd({ "BufWritePost" }, {
-  pattern = { "*.java" },
-  callback = function()
-    vim.lsp.codelens.refresh()
-  end,
-})
-
 -- This autocommand runs the function on every BufRead event
 -- vim.api.nvim_create_autocmd({ "BufEnter" }, {
 vim.api.nvim_create_autocmd({ "BufReadPre" }, {
@@ -61,24 +54,6 @@ vim.api.nvim_create_autocmd({ "BufEnter" }, {
   pattern = { "*.lds" },
   callback = function()
     vim.cmd("set filetype=c")
-  end,
-})
-vim.api.nvim_create_autocmd({ "BufEnter" }, {
-  pattern = { "*tim*.txt" },
-  callback = function()
-    vim.cmd("set filetype=asm")
-  end,
-})
-vim.api.nvim_create_autocmd({ "BufEnter" }, {
-  pattern = { "emu_cmd.txt" },
-  callback = function()
-    vim.cmd("set filetype=nim")
-  end,
-})
-vim.api.nvim_create_autocmd({ "BufEnter" }, {
-  pattern = { "*.asim" },
-  callback = function()
-    vim.cmd("set filetype=sh")
   end,
 })
 

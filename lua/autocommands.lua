@@ -24,6 +24,12 @@ vim.api.nvim_create_autocmd({ "VimResized" }, {
   end,
 })
 
+-- -- tristone13th/lspmark.nvim
+-- vim.api.nvim_create_autocmd({ "DirChanged" }, {
+--     callback = require("lspmark.bookmarks").load_bookmarks,
+--     pattern = { "*" },
+-- })
+
 vim.api.nvim_create_autocmd({ "TextYankPost" }, {
   callback = function()
     vim.highlight.on_yank { higroup = "Visual", timeout = 200 }
@@ -55,6 +61,24 @@ vim.api.nvim_create_autocmd({ "BufEnter" }, {
   pattern = { "*.lds" },
   callback = function()
     vim.cmd("set filetype=c")
+  end,
+})
+vim.api.nvim_create_autocmd({ "BufEnter" }, {
+  pattern = { "*tim*.txt" },
+  callback = function()
+    vim.cmd("set filetype=asm")
+  end,
+})
+vim.api.nvim_create_autocmd({ "BufEnter" }, {
+  pattern = { "emu_cmd.txt" },
+  callback = function()
+    vim.cmd("set filetype=nim")
+  end,
+})
+vim.api.nvim_create_autocmd({ "BufEnter" }, {
+  pattern = { "*.asim" },
+  callback = function()
+    vim.cmd("set filetype=sh")
   end,
 })
 

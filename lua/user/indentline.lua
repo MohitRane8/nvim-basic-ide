@@ -2,7 +2,7 @@ local M = {
   "lukas-reineke/indent-blankline.nvim",
   commit = "e10626f7fcd51ccd56d7ffc00883ba7e0aa28f78",    -- commit date: 2025-01-20
   event = "BufReadPre",
-  -- main = "ibl",
+  main = "ibl",
 }
 
 M.opts = {

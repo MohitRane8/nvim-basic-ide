@@ -15,6 +15,13 @@ M.config = function()
   require("diffview").setup({
     enhanced_diff_hl = true,
     show_help_hints = false,
+    file_panel = {
+      win_config = {
+        type = "split",
+        position = "right",
+        width = 50,
+      },
+    },
   })
 end
 

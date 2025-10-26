@@ -73,8 +73,9 @@ keymap("n", "<leader>p", "l[mj{jzt", { silent = true, remap = true })
 -- Clear highlights
 -- keymap("n", "<leader>h", "<cmd>nohlsearch<CR>", opts)
 
--- Close buffers
-keymap("n", "<S-q>", "<cmd>bdelete<CR>", opts)
+-- Close current buffer, tab
+keymap("n", "<S-q>", "<cmd>q<CR>", opts)
+keymap("n", "<C-q>", "<cmd>tabclose<CR>", opts)
 
 -- Better paste
 keymap("v", "p", "P", opts)
@@ -163,11 +164,13 @@ keymap("n", "<leader>fn", "<cmd>lua require('fzf-lua').lsp_document_symbols()<CR
 -- Telescope
 -- grep_string for fuzzy - search params: match case, include files, exclude files, use_regex, word_match
 -- resume
--- keymap("n", "<leader>r", ":Telescope resume<CR>", opts)
--- find files
+keymap("n", "<leader>fj", ":Telescope resume<CR>", opts)
+-- find git tracked files while respecting .gitignore
 keymap("n", "<leader>ff", ":Telescope git_files<CR>", opts)
+-- find git tracked + untracked files while respecting .gitignore
+keymap("n", "<leader>fuf", ":lua require'telescope.builtin'.git_files{show_untracked = true}<CR>", opts)
 -- find all files
-keymap("n", "<leader>faf", ":Telescope find_files<CR>", opts)
+keymap("n", "<leader>faf", ":lua require'telescope.builtin'.find_files{no_ignore = true, no_ignore_parent = true}<CR>", opts)
 -- find string
 keymap("n", "<leader>fs", ":lua require'telescope.builtin'.grep_string{use_regex = false, search = ''}<Left><Left>", opts)
 -- keymap("n", "<leader>fs", ":lua require'telescope.builtin'.grep_string{use_regex = false, word_match = '-w', search = ''}<Left><Left>", opts)
@@ -268,3 +271,25 @@ keymap('v', '<leader>dt', ':CheckDiff<CR>', opts)
 -- replacement is to be done and then press <leader>fh
 keymap('n', '<leader>fh', ':%s/<C-R>"//g<Left><Left>', opts)
 keymap('v', '<leader>fh', ':s/<C-R>"//g<Left><Left>', opts)
+
+-- -- RutaTang/quicknote.nvim
+-- -- Note at current line
+-- keymap("n", "<leader>asj", "<cmd>:lua require('quicknote').NewNoteAtCurrentLine()<CR>", opts)
+-- keymap("n", "<leader>ask", "<cmd>:lua require('quicknote').OpenNoteAtCurrentLine()<CR>", opts)
+-- keymap("n", "<leader>asl", "<cmd>:lua require('quicknote').DeleteNoteAtCurrentLine()<CR>", opts)
+-- -- Note at CWD
+-- keymap("n", "<leader>adj", "<cmd>:lua require('quicknote').NewNoteAtCWD()<CR>", opts)
+-- keymap("n", "<leader>adk", "<cmd>:lua require('quicknote').OpenNoteAtCWD()<CR>", opts)
+-- keymap("n", "<leader>adl", "<cmd>:lua require('quicknote').DeleteNoteAtCWD()<CR>", opts)
+-- -- Note utilities
+-- keymap("n", "<leader>at", ":Telescope quicknote [scope=Global]<CR>", opts)   -- scope values: CurrentBuffer, CWD, Global
+-- keymap("n", "<leader>al", "<cmd>:lua require('quicknote').ListNotesForCWD()<CR>", opts)
+-- keymap("n", "<leader>an", "<cmd>:lua require('quicknote').JumpToNextNote()<CR>", opts)
+-- keymap("n", "<leader>ap", "<cmd>:lua require('quicknote').JumpToPreviousNote()<CR>", opts)
+-- keymap("n", "<leader>av", "<cmd>:lua require('quicknote').ToggleNoteSigns()<CR>", opts)
+
+-- LintaoAmons/bookmarks.nvim
+keymap("n", "<leader>am", ":BookmarksMark<CR>", opts)
+keymap("n", "<leader>aj", ":BookmarksTree<CR>", opts)
+keymap("n", "<leader>al", ":BookmarksGoto<CR>", opts)
+keymap("n", "<leader>aL", ":BookmarksLists<CR>", opts)

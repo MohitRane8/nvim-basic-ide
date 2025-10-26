@@ -177,10 +177,21 @@ M.config = function ()
         enable_preview = true,
       }
     },
+    extensions = {
+      -- quicknote = {
+      --   defaultScope = "CWD",
+      -- }
+    },
   })
 
   -- load fzf extension after telescope setup
   require('telescope').load_extension('fzf')
+
+  -- -- load quicknote extension after telescope setup
+  -- require('telescope').load_extension('quicknote')
+
+  -- -- load lspmark extension after telescope setup
+  -- require('telescope').load_extension('lspmark')
 end
 
 return M

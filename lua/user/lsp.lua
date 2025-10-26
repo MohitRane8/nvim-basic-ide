@@ -82,7 +82,7 @@ function M.config()
       active = signs,
     },
     update_in_insert = true,
-    underline = true,
+    underline = false,
     severity_sort = true,
     float = {
       focusable = false,

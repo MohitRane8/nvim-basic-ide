@@ -6,6 +6,7 @@ M.mason_servers = {
   "pyright@1.1.325",
   -- "bashls@5.0.0",
   "clangd@18.1.3",
+  "rust_analyzer",
 }
 
 -- servers not supported by Mason
